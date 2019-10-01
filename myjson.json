@@ -1,0 +1,142 @@
+{
+  "status": "ok",
+  "totalResults": 10,
+  "articles": [
+    {
+      "source": {
+        "id": "bbc-news",
+        "name": "BBC News"
+      },
+      "author": "BBC News",
+      "title": "Activist shot as HK protests mar China anniversary",
+      "description": "A protester is hit in the chest, in the first live round shooting in months of demonstrations.",
+      "url": "http://www.bbc.co.uk/news/world-asia-china-49891403",
+      "urlToImage": "https://ichef.bbci.co.uk/images/ic/1024x576/p07psjdg.jpg",
+      "publishedAt": "2019-10-01T11:47:35Z",
+      "content": "Media playback is unsupported on your device\r\nMedia captionProtesters clash with police on the streets of Hong Kong\r\nAn activist involved in anti-Chinese protests in Hong Kong has been shot in the chest, police say.\r\nThe incident came as thousands of people d… [+3681 chars]"
+    },
+    {
+      "source": {
+        "id": "bbc-news",
+        "name": "BBC News"
+      },
+      "author": "BBC News",
+      "title": "Ex-Yahoo engineer hacked accounts for pornography",
+      "description": "The engineer could face five years in jail for stealing sexual images and videos from user accounts.",
+      "url": "http://www.bbc.co.uk/news/technology-49892760",
+      "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/E104/production/_109040675_gettyimages-87500251.jpg",
+      "publishedAt": "2019-10-01T11:26:43Z",
+      "content": "Image copyrightGetty ImagesImage caption\r\n Ruiz saved sexual images and videos and stored them at home\r\nA former Yahoo software engineer has pleaded guilty to charges of illegally accessing user accounts.\r\nReyes Daniel Ruiz admitted he had \"hacked\" about 6,00… [+1203 chars]"
+    },
+    {
+      "source": {
+        "id": "bbc-news",
+        "name": "BBC News"
+      },
+      "author": "BBC News",
+      "title": "Taiwan bridge collapses on fishing vessels",
+      "description": "A number of people have been injured, with some feared trapped under the clapped structure.",
+      "url": "http://www.bbc.co.uk/news/world-asia-49894459",
+      "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/B616/production/_109041664_p07psj9m.jpg",
+      "publishedAt": "2019-10-01T11:13:59Z",
+      "content": null
+    },
+    {
+      "source": {
+        "id": "bbc-news",
+        "name": "BBC News"
+      },
+      "author": "BBC News",
+      "title": "Tractor protest sparks 'worst Dutch rush hour'",
+      "description": "There were some 1,100km (700 miles) of jams as farmers reacted to plans to cut nitrogen emissions.",
+      "url": "http://www.bbc.co.uk/news/world-europe-49891449",
+      "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/FF67/production/_109038356_056962884-1.jpg",
+      "publishedAt": "2019-10-01T10:48:44Z",
+      "content": "Image copyrightEPA\r\nTractor-driving farmers taking to the streets to demand greater recognition have caused the worst ever Dutch morning rush hour on Tuesday, according to motoring organisation ANWB.\r\nThere were 1,136km (700 miles) of jams at the morning peak… [+3471 chars]"
+    },
+    {
+      "source": {
+        "id": "bbc-news",
+        "name": "BBC News"
+      },
+      "author": "BBC News",
+      "title": "Trump asked Australia to help investigate Mueller",
+      "description": "PM Scott Morrison agreed to assist with an investigation into the Mueller inquiry, Canberra confirms.",
+      "url": "http://www.bbc.co.uk/news/world-australia-49887733",
+      "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/AADF/production/_109034734_58af5014-4207-4da8-95ba-1b56010912be.jpg",
+      "publishedAt": "2019-10-01T08:46:12Z",
+      "content": "Image copyrightAFP/Getty ImagesImage caption\r\n Scott Morrison and Donald Trump have forged a close relationship\r\nUS President Donald Trump called Australian PM Scott Morrison and asked for his help with an investigation into the origins of the Mueller inquiry… [+4709 chars]"
+    },
+    {
+      "source": {
+        "id": "bbc-news",
+        "name": "BBC News"
+      },
+      "author": "BBC News",
+      "title": "Johnson rejects leaks over Irish border plan",
+      "description": "The PM tells the BBC a series of customs posts away from the border is \"not what we're proposing at all\".",
+      "url": "http://www.bbc.co.uk/news/uk-politics-49890199",
+      "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/B7E1/production/_109037074_e0c86303-69ec-41d6-96fb-694b1cd9ae51.jpg",
+      "publishedAt": "2019-10-01T07:51:41Z",
+      "content": "Image copyrightGetty Images\r\nBoris Johnson has rejected leaked claims overnight that the government has proposed \"customs clearance zones\" to tackle the Irish border issue. \r\nGovernment sources told the BBC it had prepared the legal text of an updated Brexit … [+2550 chars]"
+    },
+    {
+      "source": {
+        "id": "bbc-news",
+        "name": "BBC News"
+      },
+      "author": "BBC News",
+      "title": "Massive parade marks China's 70th anniversary",
+      "description": "China is celebrating 70 years since it became a communist state but Hong Kong protests could overshadow the day.",
+      "url": "http://www.bbc.co.uk/news/live/world-asia-china-49822687",
+      "urlToImage": "//m.files.bbci.co.uk/modules/bbc-morph-news-waf-page-meta/4.0.0/bbc_news_logo.png",
+      "publishedAt": "2019-10-01T02:08:04.0326228Z",
+      "content": "It's not just the live events that are being carefully choreographed the domestic media coverage is as well. \r\nWhile Anna and I are sitting in the BBC's Singapore bureau and can write without censorship, things would be very different if we were working for… [+538 chars]"
+    },
+
+    {
+
+      "source": {
+        "id": "bbc-news",
+        "name": "BBC News"
+      },
+      "author": "BBC News",
+      "title": "Is red meat back on the menu?",
+      "description": "A controversial study says the evidence of health risks is so poor, people should keep on eating it.",
+      "url": "http://www.bbc.co.uk/news/health-49877237",
+      "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/8F5F/production/_109030763_gettyimages-687790334.jpg",
+      "publishedAt": "2019-09-30T21:39:53Z",
+      "content": "Image copyrightGetty Images\r\nA controversial study says cutting down on sausages, mince, steak and all other forms of red or processed meat is a waste of time for most people. \r\nThe report - which disagrees with most major organisations on the planet - says t… [+7374 chars]"
+    },
+
+    {
+
+      "source": {
+        "id": "bbc-news",
+        "name": "BBC News"
+      },
+      "author": "BBC News",
+      "title": "Student recants claim white peers 'cut dreadlocks'",
+      "description": "The 12-year-old had alleged three white students held her down, insulted her and cut her hair.",
+      "url": "http://www.bbc.co.uk/news/world-us-canada-49885837",
+      "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/CE03/production/_108993725_hair1.jpg",
+      "publishedAt": "2019-09-30T20:04:54Z",
+      "content": "Image copyrightReutersImage caption\r\n The 12-year-old earlier claimed she did not tell her family, fearing retaliation\r\nA 12-year-old African-American girl who accused three white peers of cutting off her dreadlocks has recanted the allegations, according to … [+2607 chars]"
+    },
+
+    {
+
+      "source": {
+        "id": "bbc-news",
+        "name": "BBC News"
+      },
+      "author": "BBC News",
+      "title": "Congressman resigns amid insider trading probe",
+      "description": "Chris Collins quit amid reports that he will plead guilty to illegally giving a tip-off to his son.",
+      "url": "http://www.bbc.co.uk/news/world-us-canada-49881856",
+      "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/152A4/production/_109029668_gettyimages-1013395386.jpg",
+      "publishedAt": "2019-09-30T20:00:10Z",
+      "content": "Image copyrightGetty Images\r\nRepublican New York Congressman Chris Collins has resigned from Congress amid reports he plans to plead guilty to charges of insider trading.\r\nAccording to prosecutors, Mr Collins gave confidential information about an Australian … [+1394 chars]"
+    }
+  ]
+}
