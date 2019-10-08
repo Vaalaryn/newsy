@@ -9,7 +9,7 @@ void main() {
     home: MyHome(),
     // Set the theme's primary color, accent color,
     theme: ThemeData(
-      primarySwatch: Colors.black45,
+      primarySwatch: Colors.red,
       accentColor: Colors.redAccent,
       // Set background color
       backgroundColor: Colors.black12,
