@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_statusbar_manager/flutter_statusbar_manager.dart';
 
 import 'package:newsy/tabs/Fav.dart';
 import 'package:newsy/tabs/Profil.dart';
@@ -38,6 +39,9 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    FlutterStatusbarManager.setStyle(StatusBarStyle.DARK_CONTENT);
+    FlutterStatusbarManager.setColor(Colors.white, animated:true);
+  FlutterStatusbarManager.setNavigationBarColor(Colors.white, animated: true);
     return Scaffold(
       body: TabBarView(
         children: <Widget>[News(), Fav(), Filter(), Profil()],

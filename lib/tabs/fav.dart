@@ -4,9 +4,8 @@ class Fav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-          children: <Widget>[],
-        ),
-    );
+        body: ListView(
+      children: <Widget>[],
+    ));
   }
 }
