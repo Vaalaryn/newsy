@@ -5,24 +5,26 @@ import 'package:newsy/components/Article.dart';
 
 class News extends StatelessWidget {
 
-  var test = 300.0;
+  var data_;
+  var color_;
 
-  void showIntro()
-  {
-    print("Hello");
-    test = 1000.0;
-  }
+  News({Key key, @required this.color_});
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(children: <Widget>[
-        Container(child: Article(), height: 900),
+        Article(color_: color_, data_: "test"),
+        Article(color_: color_, data_: "test"),
+        Article(color_: color_, data_: "test"),
+        Article(color_: color_, data_: "test"),
+        Article(color_: color_, data_: "test"),
       ]),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         tooltip: 'Increment',
-        child: Icon(Icons.more_horiz),
+        child: Icon(Icons.more_horiz, color: Colors.white),
       ),
     );
   }

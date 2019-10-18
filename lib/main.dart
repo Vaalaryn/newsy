@@ -6,13 +6,14 @@ import 'package:newsy/tabs/Profil.dart';
 import 'package:newsy/tabs/Filter.dart';
 import 'package:newsy/tabs/News.dart';
 
+var _PrimaryColor = Color.fromRGBO(255, 99, 71, 1);
+
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: MyHome(),
     theme: ThemeData(
-      primarySwatch: Colors.red,
-      accentColor: Colors.redAccent,
+      accentColor: _PrimaryColor,
     ),
   ));
 }
@@ -39,12 +40,14 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+
     FlutterStatusbarManager.setStyle(StatusBarStyle.DARK_CONTENT);
-    FlutterStatusbarManager.setColor(Colors.white, animated:true);
-  FlutterStatusbarManager.setNavigationBarColor(Colors.white, animated: true);
+    FlutterStatusbarManager.setColor(Colors.white, animated: true);
+    FlutterStatusbarManager.setNavigationBarColor(Colors.white, animated: true);
+
     return Scaffold(
       body: TabBarView(
-        children: <Widget>[News(), Fav(), Filter(), Profil()],
+        children: <Widget>[News(color_: _PrimaryColor,), Fav(), Filter(), Profil()],
         controller: controller,
       ),
       bottomNavigationBar: Material(
@@ -52,28 +55,31 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
             tabs: <Tab>[
               Tab(
                   icon: Icon(
-                    Icons.library_books,
-                  )),
+                Icons.library_books,
+                size: 25,
+              )),
               Tab(
                 icon: Icon(
                   Icons.search,
+                  size: 25,
                 ),
               ),
               Tab(
                 icon: Icon(
                   Icons.add,
+                  size: 25,
                 ),
               ),
               Tab(
                 icon: Icon(
                   Icons.person,
+                  size: 25,
                 ),
               ),
             ],
             controller: controller,
-            labelColor: Colors.red,
-            unselectedLabelColor: Colors.black
-        ),
+            labelColor: _PrimaryColor,
+            unselectedLabelColor: Colors.black),
       ),
     );
   }
