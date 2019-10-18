@@ -7,11 +7,10 @@ class Article extends StatefulWidget {
   _MyHomePageState createState() => new _MyHomePageState();
 }
 
-class _MyHomePageState extends State<Article> with SingleTickerProviderStateMixin{
-
+class _MyHomePageState extends State<Article>
+    with SingleTickerProviderStateMixin {
   bool selected = false;
   AnimationController animationController;
-
 
   @override
   void initState() {
@@ -20,8 +19,6 @@ class _MyHomePageState extends State<Article> with SingleTickerProviderStateMixi
       vsync: this,
       duration: new Duration(seconds: 7),
     );
-
-    animationController.repeat();
   }
 
   @override
@@ -115,7 +112,16 @@ class _MyHomePageState extends State<Article> with SingleTickerProviderStateMixi
                   child: FlatButton(
                     child: Row(
                       children: <Widget>[
-                        Transform.rotate(angle: this.selected ? pi/2 : 0, child: Icon(Icons.keyboard_arrow_right, color: Colors.black)),
+                        AnimatedBuilder(
+                            animation: animationController,
+                            builder: (BuildContext context, Widget _widget) {
+                              return new Transform.rotate(
+                                angle: pi * 0,
+                                child: _widget,
+                              );
+                            },
+                            child: Icon(Icons.keyboard_arrow_right,
+                                color: Colors.black)),
                         Text('En Savoir Plus',
                             style: TextStyle(color: Colors.black, fontSize: 16))
                       ],
@@ -123,7 +129,7 @@ class _MyHomePageState extends State<Article> with SingleTickerProviderStateMixi
                     ),
                     onPressed: () {
                       setState(() {
-                        selected = !selected;
+                        animationController.forward();
                       });
                     },
                     splashColor: Colors.redAccent,
@@ -149,7 +155,8 @@ class _MyHomePageState extends State<Article> with SingleTickerProviderStateMixi
               ],
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
             ),
-            Text("Intro : Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker."),
+            Text(
+                "Intro : Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker."),
           ],
         ),
         margin: const EdgeInsets.all(10.0),
