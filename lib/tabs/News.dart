@@ -17,6 +17,10 @@ class News extends StatelessWidget {
     return Scaffold(
       body: ListView(children: <Widget>[
         Article(color_: color_, data_: data_),
+        Article(color_: color_, data_: data_),
+        Article(color_: color_, data_: data_),
+        Article(color_: color_, data_: data_),
+        Article(color_: color_, data_: data_),
       ]),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},

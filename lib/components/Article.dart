@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:intl/intl.dart';
+//import 'package:url_launcher/url_launcher.dart';
 
 class Article extends StatefulWidget {
   var data_;
@@ -14,6 +17,7 @@ class Article extends StatefulWidget {
 class _Article extends State<Article> with SingleTickerProviderStateMixin {
   var data_;
   var color_;
+  var now = new DateFormat("yyyy-MM-dd'T'hh:mm:ss'Z'").format(DateTime.now());
 
   _Article({Key key, @required this.color_, @required this.data_});
 
@@ -44,6 +48,41 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
         _height = null;
       });
     }
+  }
+
+//  void _launchURL() async {
+//    var url = data_.url;
+//    if (await canLaunch(url)) {
+//      await launch(url, forceWebView: true);
+//    } else {
+//      throw 'Could not launch $url';
+//    }
+//  }
+
+  String convertDate(String date) {
+    var now = new DateTime.now();
+    DateTime dateTime = DateFormat("yyyy-MM-dd'T'hh:mm:ss'Z'").parse(date);
+    var deltaTime = now.difference(dateTime).inMinutes;
+    String msg;
+    if (deltaTime < 60) {
+      msg = 'il y a $deltaTime minutes';
+    } else if (deltaTime < 720) {
+      deltaTime = (deltaTime / 60).floor();
+      var s = (deltaTime != 1) ? 's' : '';
+      msg = 'il y a $deltaTime heure' + s;
+    } else if (deltaTime < 21600) {
+      deltaTime = (deltaTime / 1440).floor();
+      var s = (deltaTime != 1) ? 's' : '';
+      msg = 'il y a $deltaTime jour' + s;
+    } else if (deltaTime < 259200) {
+      deltaTime = (deltaTime / 43200).floor();
+      msg = 'il y a $deltaTime mois';
+    } else {
+      deltaTime = (deltaTime / 518400).floor();
+      var s = (deltaTime != 1) ? 's' : '';
+      msg = 'il y a $deltaTime an' + s;
+    }
+    return msg;
   }
 
   void goToWebPage() {}
@@ -112,17 +151,24 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
           Container(
             child: Row(
               children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    Text(/*this.data_.title*/ 'Title',
-                        style: TextStyle(color: Colors.black, fontSize: 20)),
-                    Text(this.data_.source,
-                        style: TextStyle(color: color_, fontSize: 10)),
-                  ],
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                SizedBox(
+                  width: MediaQuery.of(context).size.width -
+                      (MediaQuery.of(context).size.width * 0.25),
+                  child: Column(
+                    children: <Widget>[
+                      AutoSizeText(this.data_.title,
+                          minFontSize: 15,
+                          maxLines: 3,
+                          textAlign: TextAlign.justify,
+                          style: TextStyle(color: Colors.black)),
+                      Text(this.data_.source,
+                          style: TextStyle(color: color_, fontSize: 10)),
+                    ],
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                  ),
                 ),
-                Text(this.data_.publishedAt,
+                Text(convertDate(this.data_.publishedAt),
                     style: TextStyle(color: color_, fontSize: 10)),
               ],
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -168,7 +214,7 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
                     ],
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   ),
-                  onPressed: () {},
+                  onPressed: () {}/*_launchURL*/,
                   splashColor: Colors.redAccent,
                 ),
                 height: 50,
@@ -177,7 +223,8 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
           ),
           AnimatedContainer(
-            child: Text(this.data_.description),
+            child: Text(this.data_.description, textAlign: TextAlign.justify,),
+            margin: EdgeInsets.all(6.0),
             duration: _Timer,
             height: _height,
           )
