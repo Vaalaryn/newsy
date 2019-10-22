@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-import 'dart:developer';
-import 'dart:math';
 
 class Article extends StatefulWidget {
   var data_;
@@ -13,14 +11,11 @@ class Article extends StatefulWidget {
   _Article createState() => new _Article(data_: data_, color_: color_);
 }
 
-class _Article extends State<Article>
-    with SingleTickerProviderStateMixin {
-
+class _Article extends State<Article> with SingleTickerProviderStateMixin {
   var data_;
   var color_;
 
   _Article({Key key, @required this.color_, @required this.data_});
-
 
   AnimationController animationController;
   bool showMore = true;
@@ -51,6 +46,7 @@ class _Article extends State<Article>
     }
   }
 
+  void goToWebPage() {}
 
   @override
   Widget build(BuildContext context) {
@@ -121,8 +117,7 @@ class _Article extends State<Article>
                     Text('Titre',
                         style: TextStyle(color: Colors.black, fontSize: 20)),
                     Text('Source',
-                        style:
-                        TextStyle(color: color_, fontSize: 10)),
+                        style: TextStyle(color: color_, fontSize: 10)),
                   ],
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -139,56 +134,54 @@ class _Article extends State<Article>
             children: <Widget>[
               Expanded(
                   child: ButtonTheme(
-                    child: FlatButton(
-                      child: Row(
-                        children: <Widget>[
-                          AnimatedBuilder(
-                              animation: animationController,
-                              builder: (BuildContext context,
-                                  Widget _widget) {
-                                return new Transform.rotate(
-                                  angle: animationController.value * 3.14 / 2,
-                                  child: _widget,
-                                );
-                              },
-                              child: Icon(Icons.keyboard_arrow_right,
-                                  color: Colors.black)),
-                          Text('En Savoir Plus',
-                              style: TextStyle(
-                                  color: Colors.black, fontSize: 16))
-                        ],
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      ),
-                      onPressed: animationButton,
-                      splashColor: Colors.redAccent,
-                    ),
-                    height: 50,
-                  )),
+                child: FlatButton(
+                  child: Row(
+                    children: <Widget>[
+                      AnimatedBuilder(
+                          animation: animationController,
+                          builder: (BuildContext context, Widget _widget) {
+                            return new Transform.rotate(
+                              angle: animationController.value * 3.14 / 2,
+                              child: _widget,
+                            );
+                          },
+                          child: Icon(Icons.keyboard_arrow_right,
+                              color: Colors.black)),
+                      Text('En Savoir Plus',
+                          style: TextStyle(color: Colors.black, fontSize: 16))
+                    ],
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  ),
+                  onPressed: animationButton,
+                  splashColor: Colors.redAccent,
+                ),
+                height: 50,
+              )),
               Expanded(
                   child: ButtonTheme(
-                    child: FlatButton(
-                      child: Row(
-                        children: <Widget>[
-                          Icon(Icons.reply, color: Colors.black),
-                          Text("Lire l'article",
-                              style: TextStyle(
-                                  color: Colors.black, fontSize: 16))
-                        ],
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      ),
-                      onPressed: () {},
-                      splashColor: Colors.redAccent,
-                    ),
-                    height: 50,
-                  )),
+                child: FlatButton(
+                  child: Row(
+                    children: <Widget>[
+                      Icon(Icons.reply, color: Colors.black),
+                      Text("Lire l'article",
+                          style: TextStyle(color: Colors.black, fontSize: 16))
+                    ],
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  ),
+                  onPressed: () {},
+                  splashColor: Colors.redAccent,
+                ),
+                height: 50,
+              )),
             ],
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
           ),
           AnimatedContainer(
-            child: Text("Intro : Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker."),
+            child: Text(this.data_["urlToImage"]),
             duration: _Timer,
             height: _height,
-          )],
+          )
+        ],
       ),
       margin: const EdgeInsets.all(10.0),
       color: Colors.white,
