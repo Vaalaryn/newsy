@@ -57,7 +57,7 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
             child: Stack(children: <Widget>[
               Container(
                 child: Image.network(
-                  'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg',
+                  this.data_.urlToImage,
                   fit: BoxFit.cover,
                 ),
                 height: 180,
@@ -114,15 +114,15 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
               children: <Widget>[
                 Column(
                   children: <Widget>[
-                    Text('Titre',
+                    Text(/*this.data_.title*/ 'Title',
                         style: TextStyle(color: Colors.black, fontSize: 20)),
-                    Text('Source',
+                    Text(this.data_.source,
                         style: TextStyle(color: color_, fontSize: 10)),
                   ],
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                 ),
-                Text("il y a 2 jours",
+                Text(this.data_.publishedAt,
                     style: TextStyle(color: color_, fontSize: 10)),
               ],
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -177,7 +177,7 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
           ),
           AnimatedContainer(
-            child: Text(this.data_["urlToImage"]),
+            child: Text(this.data_.description),
             duration: _Timer,
             height: _height,
           )
