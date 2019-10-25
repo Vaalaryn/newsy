@@ -13,8 +13,8 @@ void main() {
     debugShowCheckedModeBanner: false,
     home: MyHome(),
     theme: ThemeData(
-      accentColor: _PrimaryColor,
-    ),
+    accentColor: _PrimaryColor,
+  ),
   ));
 }
 
@@ -40,14 +40,20 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-
     FlutterStatusbarManager.setStyle(StatusBarStyle.DARK_CONTENT);
     FlutterStatusbarManager.setColor(Colors.white, animated: true);
     FlutterStatusbarManager.setNavigationBarColor(Colors.white, animated: true);
 
     return Scaffold(
       body: TabBarView(
-        children: <Widget>[News(color_: _PrimaryColor,), Fav(), Filter(), Profil()],
+        children: <Widget>[
+          News(
+            color_: _PrimaryColor,
+          ),
+          Fav(),
+          Filter(),
+          Profil()
+        ],
         controller: controller,
       ),
       bottomNavigationBar: Material(
@@ -55,9 +61,9 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
             tabs: <Tab>[
               Tab(
                   icon: Icon(
-                Icons.library_books,
-                size: 25,
-              )),
+                    Icons.library_books,
+                    size: 25,
+                  )),
               Tab(
                 icon: Icon(
                   Icons.search,

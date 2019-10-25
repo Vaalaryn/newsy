@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:intl/intl.dart';
-//import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Article extends StatefulWidget {
   var data_;
@@ -17,7 +17,6 @@ class Article extends StatefulWidget {
 class _Article extends State<Article> with SingleTickerProviderStateMixin {
   var data_;
   var color_;
-  var now = new DateFormat("yyyy-MM-dd'T'hh:mm:ss'Z'").format(DateTime.now());
 
   _Article({Key key, @required this.color_, @required this.data_});
 
@@ -50,14 +49,14 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
     }
   }
 
-//  void _launchURL() async {
-//    var url = data_.url;
-//    if (await canLaunch(url)) {
-//      await launch(url, forceWebView: true);
-//    } else {
-//      throw 'Could not launch $url';
-//    }
-//  }
+  void _launchURL() async {
+    var url = data_.url;
+    if (await canLaunch(url)) {
+      await launch(url, forceWebView: true);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   String convertDate(String date) {
     var now = new DateTime.now();
@@ -214,7 +213,7 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
                     ],
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   ),
-                  onPressed: () {}/*_launchURL*/,
+                  onPressed: _launchURL,
                   splashColor: Colors.redAccent,
                 ),
                 height: 50,
