@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:newsy/components/Article.dart';
-import 'package:newsy/components/DataArticle.dart';
+import 'package:newsy_v2/components/Article.dart';
+import 'package:newsy_v2/components/DataArticle.dart';
 import 'dart:convert';
 
 class News extends StatelessWidget {
