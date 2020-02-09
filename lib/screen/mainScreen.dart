@@ -7,18 +7,13 @@ import 'package:newsy_v2/tabs/Filter.dart';
 import 'package:newsy_v2/tabs/News.dart';
 
 class MainScreen extends StatefulWidget {
-  var PrimaryColor;
 
-  MainScreen({Key key, @required this.PrimaryColor});
   @override
-  MainScreenState createState() => MainScreenState(PrimaryColor: this.PrimaryColor);
+  MainScreenState createState() => MainScreenState();
 }
 
 class MainScreenState extends State<MainScreen> with SingleTickerProviderStateMixin {
-  var PrimaryColor;
   TabController controller;
-
-  MainScreenState({Key key, @required this.PrimaryColor});
 
 
   @override
@@ -35,16 +30,13 @@ class MainScreenState extends State<MainScreen> with SingleTickerProviderStateMi
 
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarManager.setStyle(StatusBarStyle.DARK_CONTENT);
-    FlutterStatusbarManager.setColor(Colors.white, animated: true);
-    FlutterStatusbarManager.setNavigationBarColor(Colors.white, animated: true);
+    FlutterStatusbarManager.setColor(Theme.of(context).backgroundColor, animated: true);
+    FlutterStatusbarManager.setNavigationBarColor(Theme.of(context).backgroundColor, animated: true);
 
     return Scaffold(
       body: TabBarView(
         children: <Widget>[
-          News(
-            color_: PrimaryColor,
-          ),
+          News(),
           Fav(),
           Filter(),
           Profil()
@@ -52,7 +44,9 @@ class MainScreenState extends State<MainScreen> with SingleTickerProviderStateMi
         controller: controller,
       ),
       bottomNavigationBar: Material(
+        color: Theme.of(context).backgroundColor,
         child: TabBar(
+          indicatorColor: Theme.of(context).primaryColor,
             tabs: <Tab>[
               Tab(
                   icon: Icon(
@@ -79,8 +73,9 @@ class MainScreenState extends State<MainScreen> with SingleTickerProviderStateMi
               ),
             ],
             controller: controller,
-            labelColor: PrimaryColor,
-            unselectedLabelColor: Colors.black),
+            labelColor: Theme.of(context).primaryColor,
+            unselectedLabelColor: Theme.of(context).textTheme.body1.color
+        ),
       ),
     );
   }

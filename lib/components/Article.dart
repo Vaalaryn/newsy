@@ -1,24 +1,22 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:newsy_v2/controller/ArticleController.dart';
 
 class Article extends StatefulWidget {
   var data_;
-  var color_;
 
-  Article({Key key, @required this.color_, @required this.data_});
+  Article({Key key, @required this.data_});
 
   @override
-  _Article createState() => new _Article(data_: data_, color_: color_);
+  _Article createState() => new _Article(data_: data_);
 }
 
 class _Article extends State<Article> with SingleTickerProviderStateMixin {
   var data_;
-  var color_;
   var articleController = ArticleController();
 
-  _Article({Key key, @required this.color_, @required this.data_});
+  _Article({Key key, @required this.data_});
 
   AnimationController animationController;
   bool showMore = true;
@@ -53,45 +51,40 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
               Positioned(
                 child: Row(
                   children: <Widget>[
-                    IconButton(
-                      icon: Icon(
-                        Icons.alarm_add,
-                        color: color_,
+                    Column(children: <Widget>[
+                      IconButton(
+                        icon: Icon(Icons.star_border,
+                            color: Theme.of(context).textTheme.body1.color),
+                        onPressed: () {},
                       ),
-                      onPressed: () {},
-                    ),
-                    Column(
-                      children: <Widget>[
-                        IconButton(
-                          icon: Icon(
-                            Icons.star_border,
-                            color: color_,
-                          ),
-                          onPressed: () {},
+                      IconButton(
+                        icon: Icon(
+                          Icons.alarm_add,
+                          color: Theme.of(context).textTheme.body1.color,
                         ),
-                        IconButton(
-                          icon: Icon(
-                            Icons.share,
-                            color: color_,
-                          ),
-                          onPressed: () {},
+                        onPressed: () {},
+                      ),
+                      IconButton(
+                        icon: Icon(
+                          Icons.share,
+                          color: Theme.of(context).primaryColor,
                         ),
-                        IconButton(
-                          icon: Opacity(
-                              opacity: 1.0,
-                              child: Icon(
-                                Icons.check,
-                                color: color_,
-                              )),
-                          onPressed: () {},
-                        ),
-                      ],
-                    ),
+                        onPressed: () {},
+                      ),
+                      // TODO : uniquement si deja lu
+//                      IconButton(
+//                        icon: Icon(
+//                          Icons.check,
+//                          color: Theme.of(context).primaryColor,
+//                        ),
+//                        onPressed: () {},
+//                      )
+                    ])
                   ],
                   crossAxisAlignment: CrossAxisAlignment.start,
                 ),
                 right: 0,
-              ),
+              )
             ]),
             height: 180,
             width: double.infinity,
@@ -108,16 +101,20 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
                           minFontSize: 15,
                           maxLines: 3,
                           textAlign: TextAlign.justify,
-                          style: TextStyle(color: Colors.black)),
+                          style: TextStyle(
+                              color: Theme.of(context).textTheme.body1.color)),
                       Text(this.data_.source,
-                          style: TextStyle(color: color_, fontSize: 10)),
+                          style: TextStyle(
+                              color: Theme.of(context).primaryColor,
+                              fontSize: 10)),
                     ],
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                   ),
                 ),
                 Text(this.articleController.convertDate(this.data_.publishedAt),
-                    style: TextStyle(color: color_, fontSize: 10)),
+                    style: TextStyle(
+                        color: Theme.of(context).primaryColor, fontSize: 10)),
               ],
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -140,14 +137,16 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
                             );
                           },
                           child: Icon(Icons.keyboard_arrow_right,
-                              color: Colors.black)),
+                              color: Theme.of(context).textTheme.body1.color)),
                       Text('En Savoir Plus',
-                          style: TextStyle(color: Colors.black, fontSize: 16))
+                          style: TextStyle(
+                              color: Theme.of(context).textTheme.body1.color,
+                              fontSize: 16))
                     ],
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   ),
                   onPressed: this.articleController.animationButton,
-                  splashColor: Colors.redAccent,
+                  splashColor: Theme.of(context).primaryColor,
                 ),
                 height: 50,
               )),
@@ -156,14 +155,18 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
                 child: FlatButton(
                   child: Row(
                     children: <Widget>[
-                      Icon(Icons.reply, color: Colors.black),
+                      Icon(Icons.reply,
+                          color: Theme.of(context).textTheme.body1.color),
                       Text("Lire l'article",
-                          style: TextStyle(color: Colors.black, fontSize: 16))
+                          style: TextStyle(
+                              color: Theme.of(context).textTheme.body1.color,
+                              fontSize: 16))
                     ],
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   ),
-                  onPressed: () => articleController.launchURL(context, this.data_),
-                  splashColor: Colors.redAccent,
+                  onPressed: () =>
+                      articleController.launchURL(context, this.data_),
+                  splashColor: Theme.of(context).primaryColor,
                 ),
                 height: 50,
               )),
@@ -182,7 +185,7 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
         ],
       ),
       margin: const EdgeInsets.all(10.0),
-      color: Colors.white,
+      color: Theme.of(context).backgroundColor,
     );
   }
 }

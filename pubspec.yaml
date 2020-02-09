@@ -27,6 +27,8 @@ dependencies:
   auto_size_text: ^2.1.0
   intl: ^0.15.8
   webview_flutter: ^0.3.19+5
+  flutter_material_color_picker: ^1.0.5
+  flutter_colorpicker: any
 
 dev_dependencies:
   flutter_test:
