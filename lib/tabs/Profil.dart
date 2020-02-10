@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_material_color_picker/flutter_material_color_picker.dart';
-import 'package:newsy_v2/main.dart';
 import 'package:newsy_v2/components/ColorButton.dart';
 import 'package:newsy_v2/components/SettingsTitle.dart';
+import 'package:newsy_v2/main.dart';
 
 class Profil extends StatefulWidget {
   createState() => ProfilState();
@@ -18,7 +18,22 @@ class ProfilState extends State<Profil> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: ListView(children: <Widget>[
-          SettingsTitle(title: "Theme"),
+      SettingsTitle(title: "Info Profil"),
+      FlatButton(
+        color: Theme.of(context).primaryColor,
+        child: Container(
+            margin: EdgeInsets.all(10),
+            child: ListTile(
+              title: Text("Déconnexion",
+                  style: TextStyle(
+                      fontSize: 22,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold)),
+              trailing: Icon(Icons.exit_to_app, color: Colors.white, size: 40),
+            )),
+        onPressed: () => {},
+      ),
+      SettingsTitle(title: "Theme"),
       ListTile(
           title: Text('Theme Sombre'),
           trailing: Switch(
@@ -60,7 +75,7 @@ class ProfilState extends State<Profil> {
                       ));
             }),
       ),
-          SettingsTitle(title: "Langue"),
+      SettingsTitle(title: "Langue"),
       ListTile(
         title: Text("Langue"),
         trailing: DropdownButton(
@@ -68,21 +83,6 @@ class ProfilState extends State<Profil> {
           onChanged: (item) {},
         ),
       ),
-          SettingsTitle(title: "Info Profil"),
-      FlatButton(
-        color: Theme.of(context).primaryColor,
-        child: Container(
-            margin: EdgeInsets.all(10),
-            child: ListTile(
-              title: Text("Déconnexion",
-                  style: TextStyle(
-                      fontSize: 22,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold)),
-              trailing: Icon(Icons.exit_to_app, color: Colors.white, size: 40),
-            )),
-        onPressed: () => {},
-      )
     ]));
   }
 }

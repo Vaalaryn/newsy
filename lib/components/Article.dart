@@ -184,7 +184,7 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
           )
         ],
       ),
-      margin: const EdgeInsets.all(10.0),
+      margin: EdgeInsets.all(10.0),
       color: Theme.of(context).backgroundColor,
     );
   }
