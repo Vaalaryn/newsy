@@ -20,19 +20,20 @@ class _WebViewContainerState extends State<WebViewContainer> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
-          iconTheme: IconThemeData(color: Colors.black),
+          backgroundColor: Theme.of(context).backgroundColor,
+          iconTheme: IconThemeData(color: Theme.of(context).textTheme.body1.color),
+          bottom: PreferredSize(child: Container(color:  Theme.of(context).primaryColor, height: 4.0,), preferredSize: Size.fromHeight(4.0)),
           actions: <Widget>[
             IconButton(
-              icon: Icon(Icons.alarm_add, color: Colors.black),
+              icon: Icon(Icons.alarm_add, color: Theme.of(context).textTheme.body1.color),
               onPressed: () {},
             ),
             IconButton(
-              icon: Icon(Icons.star_border, color: Colors.black),
+              icon: Icon(Icons.star_border, color: Theme.of(context).textTheme.body1.color),
               onPressed: () {},
             ),
             IconButton(
-              icon: Icon(Icons.share, color: Colors.black),
+              icon: Icon(Icons.share, color: Theme.of(context).primaryColor),
               onPressed: () {},
             )]),
         body: Column(

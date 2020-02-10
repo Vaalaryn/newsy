@@ -137,7 +137,7 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
                             );
                           },
                           child: Icon(Icons.keyboard_arrow_right,
-                              color: Theme.of(context).textTheme.body1.color)),
+                              color: Theme.of(context).primaryColor)),
                       Text('En Savoir Plus',
                           style: TextStyle(
                               color: Theme.of(context).textTheme.body1.color,
@@ -156,7 +156,7 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
                   child: Row(
                     children: <Widget>[
                       Icon(Icons.reply,
-                          color: Theme.of(context).textTheme.body1.color),
+                          color: Theme.of(context).primaryColor),
                       Text("Lire l'article",
                           style: TextStyle(
                               color: Theme.of(context).textTheme.body1.color,
@@ -178,9 +178,9 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
               this.data_.description,
               textAlign: TextAlign.justify,
             ),
-            margin: EdgeInsets.all(6.0),
+            margin: showMore ? EdgeInsets.all(0) : EdgeInsets.all(5.0),
             duration: _Timer,
-            height: height,
+            height: showMore ? height : null,
           )
         ],
       ),

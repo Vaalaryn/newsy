@@ -11,17 +11,6 @@ class ArticleController {
 
   void animationButton() {
     that.showMore = !that.showMore;
-    if (that.showMore) {
-      that.animationController.reverse();
-      that.setState(() {
-        that.height = 0.0;
-      });
-    } else {
-      that.animationController.forward();
-      that.setState(() {
-        that.height = null;
-      });
-    }
   }
 
   void launchURL(BuildContext context, data) {

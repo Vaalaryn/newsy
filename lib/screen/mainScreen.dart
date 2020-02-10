@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_statusbar_manager/flutter_statusbar_manager.dart';
+//import 'package:flutter_statusbar_manager/flutter_statusbar_manager.dart';
 
 import 'package:newsy_v2/tabs/Fav.dart';
 import 'package:newsy_v2/tabs/Profil.dart';
@@ -30,8 +30,8 @@ class MainScreenState extends State<MainScreen> with SingleTickerProviderStateMi
 
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarManager.setColor(Theme.of(context).backgroundColor, animated: true);
-    FlutterStatusbarManager.setNavigationBarColor(Theme.of(context).backgroundColor, animated: true);
+//    FlutterStatusbarManager.setColor(Theme.of(context).backgroundColor, animated: true);
+//    FlutterStatusbarManager.setNavigationBarColor(Theme.of(context).backgroundColor, animated: true);
 
     return Scaffold(
       body: TabBarView(

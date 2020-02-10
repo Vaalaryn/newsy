@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_material_color_picker/flutter_material_color_picker.dart';
 import 'package:newsy_v2/main.dart';
+import 'package:newsy_v2/components/ColorButton.dart';
+import 'package:newsy_v2/components/SettingsTitle.dart';
 
 class Profil extends StatefulWidget {
   createState() => ProfilState();
@@ -15,6 +18,7 @@ class ProfilState extends State<Profil> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: ListView(children: <Widget>[
+          SettingsTitle(title: "Theme"),
       ListTile(
           title: Text('Theme Sombre'),
           trailing: Switch(
@@ -22,13 +26,15 @@ class ProfilState extends State<Profil> {
             onChanged: (value) {
               isSwitched = value;
               ThemeSwitcher.of(context).switchTheme(ThemeData(
-                  primaryColor: Theme.of(context).primaryColor,
-                  accentColor: Theme.of(context).accentColor,
-                  backgroundColor: value ? Colors.black : Colors.white,
-                  brightness: value ? Brightness.dark : Brightness.light,
-                  textTheme: TextTheme(
-                      body1: TextStyle(
-                          color: !value ? Colors.black : Colors.white))));
+                primaryColor: Theme.of(context).primaryColor,
+                accentColor: Theme.of(context).accentColor,
+                backgroundColor:
+                    value ? Color.fromRGBO(30, 30, 30, 1) : Colors.white,
+                brightness: value ? Brightness.dark : Brightness.light,
+//                  textTheme: TextTheme(
+//                      body1: TextStyle(
+//                          color: !value ? Colors.black : Colors.white))
+              ));
             },
             activeTrackColor: Theme.of(context).primaryColor,
             activeColor: Theme.of(context).accentColor,
@@ -44,28 +50,38 @@ class ProfilState extends State<Profil> {
                   builder: (BuildContext context) => new AlertDialog(
                         content: Row(
                           children: <Widget>[
-                            IconButton(icon: CircleColor(color: Colors.blueAccent, circleSize: 60), onPressed: () {
-                            Navigator.pop(context);
-                            ThemeSwitcher.of(context).switchTheme(ThemeData(
-                                primaryColor: Colors.blueAccent,
-                                accentColor: Colors.blueAccent,
-                                backgroundColor: Theme.of(context).backgroundColor,
-                                brightness: Theme.of(context).brightness,
-                                textTheme: Theme.of(context).textTheme));
-                            }),
-                            IconButton(icon: CircleColor(color: Colors.red, circleSize: 60), onPressed: () {
-                            Navigator.pop(context);
-                            ThemeSwitcher.of(context).switchTheme(ThemeData(
-                                primaryColor: Colors.red,
-                                accentColor: Colors.redAccent,
-                                backgroundColor: Theme.of(context).backgroundColor,
-                                brightness: Theme.of(context).brightness,
-                                textTheme: Theme.of(context).textTheme));
-                            }),
+                            ColorButton(color: Colors.purple),
+                            ColorButton(color: Colors.red),
+                            ColorButton(color: Colors.blue),
+                            ColorButton(color: Colors.green),
+                            ColorButton(color: Colors.pink),
                           ],
                         ),
                       ));
             }),
+      ),
+          SettingsTitle(title: "Langue"),
+      ListTile(
+        title: Text("Langue"),
+        trailing: DropdownButton(
+          items: [],
+          onChanged: (item) {},
+        ),
+      ),
+          SettingsTitle(title: "Info Profil"),
+      FlatButton(
+        color: Theme.of(context).primaryColor,
+        child: Container(
+            margin: EdgeInsets.all(10),
+            child: ListTile(
+              title: Text("Déconnexion",
+                  style: TextStyle(
+                      fontSize: 22,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold)),
+              trailing: Icon(Icons.exit_to_app, color: Colors.white, size: 40),
+            )),
+        onPressed: () => {},
       )
     ]));
   }

@@ -1,7 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
-import 'dart:convert';
-
 class DataArticle {
   var data;
   var source;

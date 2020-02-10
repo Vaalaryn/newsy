@@ -1,17 +1,7 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:newsy_v2/components/Article.dart';
 import 'package:newsy_v2/components/DataArticle.dart';
-import 'package:newsy_v2/main.dart';
-
-var themeData = ThemeData(
-    fontFamily: 'Raleway',
-    primaryColor: Colors.red,
-    brightness: Brightness.light,
-    backgroundColor: Colors.white,
-    accentColor: Colors.blue
-);
 
 class News extends StatelessWidget {
   var test =
