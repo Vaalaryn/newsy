@@ -15,13 +15,16 @@ class Article extends StatefulWidget {
 class _Article extends State<Article> with SingleTickerProviderStateMixin {
   var data_;
   var articleController = ArticleController();
-
-  _Article({Key key, @required this.data_});
+  var _Timer = new Duration(milliseconds: 150);
 
   AnimationController animationController;
+
+  bool read = false;
   bool showMore = true;
+
   double height = 0.0;
-  var _Timer = new Duration(milliseconds: 150);
+
+  _Article({Key key, @required this.data_});
 
   @override
   void initState() {
@@ -72,13 +75,15 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
                         onPressed: () {},
                       ),
                       // TODO : uniquement si deja lu
-//                      IconButton(
-//                        icon: Icon(
-//                          Icons.check,
-//                          color: Theme.of(context).primaryColor,
-//                        ),
-//                        onPressed: () {},
-//                      )
+                      Opacity(
+                          opacity: read ? 1 : 0,
+                          child: IconButton(
+                            icon: Icon(
+                              Icons.check,
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            onPressed: () {},
+                          ))
                     ])
                   ],
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -155,8 +160,7 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
                 child: FlatButton(
                   child: Row(
                     children: <Widget>[
-                      Icon(Icons.reply,
-                          color: Theme.of(context).primaryColor),
+                      Icon(Icons.reply, color: Theme.of(context).primaryColor),
                       Text("Lire l'article",
                           style: TextStyle(
                               color: Theme.of(context).textTheme.body1.color,
@@ -164,8 +168,11 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
                     ],
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   ),
-                  onPressed: () =>
-                      articleController.launchURL(context, this.data_),
+                  onPressed: () {
+                    setState(() {
+                      articleController.launchURL(context, this.data_);
+                    });
+                  },
                   splashColor: Theme.of(context).primaryColor,
                 ),
                 height: 50,

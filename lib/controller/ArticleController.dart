@@ -21,6 +21,7 @@ class ArticleController {
   }
 
   void launchURL(BuildContext context, data) {
+    that.read = true;
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => WebViewContainer(data)));
   }
