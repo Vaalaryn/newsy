@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:share/share.dart';
 
 class WebViewContainer extends StatefulWidget {
   final data;
@@ -25,16 +26,36 @@ class _WebViewContainerState extends State<WebViewContainer> {
           bottom: PreferredSize(child: Container(color:  Theme.of(context).primaryColor, height: 4.0,), preferredSize: Size.fromHeight(4.0)),
           actions: <Widget>[
             IconButton(
-              icon: Icon(Icons.alarm_add, color: Theme.of(context).textTheme.body1.color),
-              onPressed: () {},
+              icon: Icon( !this._data.push ? Icons.alarm_add : Icons.alarm_on,
+                  color: !this._data.push
+                      ? Theme.of(context).textTheme.body1.color
+                      : Theme.of(context).primaryColor),
+              onPressed: () {
+                setState(() {
+                  this._data.push = !this._data.push;
+                });
+              },
             ),
             IconButton(
-              icon: Icon(Icons.star_border, color: Theme.of(context).textTheme.body1.color),
-              onPressed: () {},
+              icon: Icon(!this._data.fav ? Icons.star_border : Icons.star,
+                  color: !this._data.fav
+                      ? Theme.of(context).textTheme.body1.color
+                      : Theme.of(context).primaryColor),
+              onPressed: () {
+                setState(() {
+                  this._data.fav = !this._data.fav;
+                });
+              },
             ),
             IconButton(
               icon: Icon(Icons.share, color: Theme.of(context).primaryColor),
-              onPressed: () {},
+              onPressed: () {
+                final RenderBox box = context.findRenderObject();
+                Share.share(
+                    this._data.data_.url,
+                    sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size
+                );
+              },
             )]),
         body: Column(
           children: [
@@ -42,7 +63,7 @@ class _WebViewContainerState extends State<WebViewContainer> {
                 child: WebView(
                     key: _key,
                     javascriptMode: JavascriptMode.unrestricted,
-                    initialUrl: this._data.url))
+                    initialUrl: this._data.data_.url))
           ]));
   }
 }

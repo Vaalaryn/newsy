@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:newsy_v2/screen/webPageScreen.dart';
+import 'package:share/share.dart';
 
 class ArticleController {
   var that;
@@ -18,6 +19,14 @@ class ArticleController {
     } else {
       that.animationController.forward();
     }
+  }
+
+  void shareButton(context) {
+    final RenderBox box = context.findRenderObject();
+    Share.share(
+        that.data_.url,
+        sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size
+    );
   }
 
   void launchURL(BuildContext context, data) {

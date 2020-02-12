@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:newsy_v2/controller/ArticleController.dart';
+import 'package:share/share.dart';
 
 class Article extends StatefulWidget {
   var data_;
@@ -60,8 +61,8 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
                   children: <Widget>[
                     Column(children: <Widget>[
                       IconButton(
-                        icon: Icon(fav ? Icons.star_border : Icons.star,
-                            color: fav
+                        icon: Icon(!fav ? Icons.star_border : Icons.star,
+                            color: !fav
                                 ? Theme.of(context).backgroundColor
                                 : Theme.of(context).primaryColor),
                         onPressed: () {
@@ -71,24 +72,27 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
                         },
                       ),
                       IconButton(
-                        icon: Icon(push ? Icons.alarm_add : Icons.alarm_on,
-                            color: push
-                                ? Theme.of(context).backgroundColor
-                                : Theme.of(context).primaryColor),
-                        onPressed: () {
-                          setState(() {
-                            push = !push;
-                            if(!fav)
-                              fav = true;
-                          });
-                        },
-                      ),
+                          icon: Icon(!push ? Icons.alarm_add : Icons.alarm_on,
+                              color: !push
+                                  ? Theme.of(context).backgroundColor
+                                  : Theme.of(context).primaryColor),
+                          onPressed: () {
+                            setState(() {
+                              push = !push;
+                            });
+                          }),
                       IconButton(
                         icon: Icon(
                           Icons.share,
                           color: Theme.of(context).primaryColor,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          final RenderBox box = context.findRenderObject();
+                          Share.share(
+                              data_.url,
+                              sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size
+                          );
+                        },
                       ),
                       Opacity(
                           opacity: read ? 1 : 0,
@@ -97,7 +101,9 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
                               Icons.check,
                               color: Theme.of(context).primaryColor,
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              articleController.shareButton(context);
+                            },
                           ))
                     ])
                   ],
@@ -189,7 +195,7 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
                   ),
                   onPressed: () {
                     setState(() {
-                      articleController.launchURL(context, this.data_);
+                      articleController.launchURL(context, this);
                     });
                   },
                   splashColor: Theme.of(context).primaryColor,
@@ -201,7 +207,9 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
           ),
           AnimatedContainer(
             child: Text(
-              this.data_.description == null ? '' : this.data_.description,
+              this.data_.description == null || this.data_.description == ""
+                  ? this.data_.content
+                  : this.data_.description,
               textAlign: TextAlign.justify,
             ),
             margin: showMore ? EdgeInsets.all(0) : EdgeInsets.all(5.0),
