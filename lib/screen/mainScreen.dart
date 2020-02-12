@@ -15,7 +15,6 @@ class MainScreen extends StatefulWidget {
 class MainScreenState extends State<MainScreen> with SingleTickerProviderStateMixin {
   TabController controller;
 
-
   @override
   void initState() {
     super.initState();
@@ -30,8 +29,6 @@ class MainScreenState extends State<MainScreen> with SingleTickerProviderStateMi
 
   @override
   Widget build(BuildContext context) {
-//    FlutterStatusbarManager.setColor(Theme.of(context).backgroundColor, animated: true);
-//    FlutterStatusbarManager.setNavigationBarColor(Theme.of(context).backgroundColor, animated: true);
 
     return Scaffold(
       body: TabBarView(

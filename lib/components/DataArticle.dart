@@ -10,7 +10,7 @@ class DataArticle {
 
   @override
   DataArticle(
-      {this.source = "", this.author  = "", this.description  = "", this.publishedAt  = "", this.title  = "", this.url = "", this.urlToImage = ""});
+      {this.source, this.author, this.description, this.publishedAt, this.title, this.url, this.urlToImage});
 
   factory DataArticle.fromJson(Map<String, dynamic> json) =>
       _dataArticleToJson(json);

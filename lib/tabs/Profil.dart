@@ -43,6 +43,7 @@ class ProfilState extends State<Profil> {
               ThemeSwitcher.of(context).switchTheme(ThemeData(
                 primaryColor: Theme.of(context).primaryColor,
                 accentColor: Theme.of(context).accentColor,
+
                 backgroundColor:
                     value ? Color.fromRGBO(30, 30, 30, 1) : Colors.white,
                 brightness: value ? Brightness.dark : Brightness.light,

@@ -45,7 +45,7 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
             child: Stack(children: <Widget>[
               Container(
                 child: Image.network(
-                  this.data_.urlToImage,
+                  this.data_.urlToImage == null ? 'http://placeimg.com/640/480/animals' : this.data_.urlToImage,
                   fit: BoxFit.cover,
                 ),
                 height: 180,
@@ -57,13 +57,13 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
                     Column(children: <Widget>[
                       IconButton(
                         icon: Icon(Icons.star_border,
-                            color: Theme.of(context).textTheme.body1.color),
+                            color: Theme.of(context).backgroundColor),
                         onPressed: () {},
                       ),
                       IconButton(
                         icon: Icon(
                           Icons.alarm_add,
-                          color: Theme.of(context).textTheme.body1.color,
+                          color: Theme.of(context).backgroundColor,
                         ),
                         onPressed: () {},
                       ),
@@ -74,7 +74,6 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
                         ),
                         onPressed: () {},
                       ),
-                      // TODO : uniquement si deja lu
                       Opacity(
                           opacity: read ? 1 : 0,
                           child: IconButton(
@@ -102,13 +101,13 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
                       (MediaQuery.of(context).size.width * 0.25),
                   child: Column(
                     children: <Widget>[
-                      AutoSizeText(this.data_.title,
+                      AutoSizeText(this.data_.title == null ? '' : this.data_.title,
                           minFontSize: 15,
                           maxLines: 3,
                           textAlign: TextAlign.justify,
                           style: TextStyle(
                               color: Theme.of(context).textTheme.body1.color)),
-                      Text(this.data_.source,
+                      Text(this.data_.source == null ? 'No Source' : this.data_.source,
                           style: TextStyle(
                               color: Theme.of(context).primaryColor,
                               fontSize: 10)),
@@ -182,7 +181,7 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
           ),
           AnimatedContainer(
             child: Text(
-              this.data_.description,
+              this.data_.description == null ? '' : this.data_.description,
               textAlign: TextAlign.justify,
             ),
             margin: showMore ? EdgeInsets.all(0) : EdgeInsets.all(5.0),
