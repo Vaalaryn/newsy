@@ -20,7 +20,7 @@ class ColorButtonState extends State<ColorButton> {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-        icon: CircleColor(color: this.color, circleSize: 60),
+        icon: CircleColor(color: this.color, circleSize: 50),
         onPressed: () {
           Navigator.pop(context);
           ThemeSwitcher.of(context).switchTheme(ThemeData(

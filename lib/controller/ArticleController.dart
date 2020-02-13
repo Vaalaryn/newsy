@@ -29,6 +29,32 @@ class ArticleController {
     );
   }
 
+  void favButton(){
+    that.setState(() {
+      that.fav = !that.fav;
+    });
+    Scaffold.of(that.context).showSnackBar(SnackBar(
+      backgroundColor: Theme.of(that.context).primaryColor,
+      duration: Duration(milliseconds: 650),
+      content: Text(that.fav
+          ? "Article ajouté au favoris"
+          : "Article supprimé des favoris"),
+    ));
+  }
+
+  void pushButton(){
+    that.setState(() {
+      that.push = !that.push;
+    });
+    Scaffold.of(that.context).showSnackBar(SnackBar(
+      backgroundColor: Theme.of(that.context).primaryColor,
+      duration: Duration(milliseconds: 650),
+      content: Text(that.push
+          ? "Rappel ajouté"
+          : "Rappel supprimé"),
+    ));
+  }
+
   void launchURL(BuildContext context, data) {
     that.read = true;
     Navigator.push(

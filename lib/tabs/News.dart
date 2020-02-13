@@ -4,7 +4,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:newsy_v2/components/Article.dart';
-import 'package:newsy_v2/components/DataArticle.dart';
+import 'package:newsy_v2/components/FilterDialog.dart';
+import 'package:newsy_v2/factory/DataArticle.dart';
 import 'package:newsy_v2/components/Loader.dart';
 import 'package:newsy_v2/factory/PostRequest.dart';
 
@@ -22,7 +23,7 @@ class NewsState extends State<News> with AutomaticKeepAliveClientMixin<News> {
   var post;
 
   Future<PostRequest> fetchPost() async {
-    final response = await http.post('http://192.168.1.63' +
+    final response = await http.post('http://10.176.134.14' +
         '/fr/api/newsy?token=RjGoRzoberAVObNnI8A8rR&mail=brice.bitot@neuf.fra&endpoint=top-headlines&params={"country": "fr"}');
     debugPrint(response.statusCode.toString());
     if (response.statusCode == 200) {
@@ -64,190 +65,8 @@ class NewsState extends State<News> with AutomaticKeepAliveClientMixin<News> {
         onPressed: () {
           showDialog(
               context: context,
-              builder: (BuildContext context) => SimpleDialog(
-                    title: Text(
-                      "Choisir un filtre",
-                      style: TextStyle(color: Theme.of(context).primaryColor),
-                    ),
-                    children: <Widget>[
-                      // default
-                      ListTile(
-                        title: Text("Filtre par default",
-                            style: TextStyle(
-                              decoration: TextDecoration.underline,
-                            )),
-                      ),
-                      FlatButton(
-                        child: ListTile(
-                          title: Text("Filtre default"),
-                          trailing: Icon(Icons.arrow_forward_ios,
-                              color: Theme.of(context).primaryColor),
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            post = fetchPost();
-                            Navigator.pop(context, true);
-                          });
-                        },
-                      ),
-                      ListTile(
-                        title: Text("Filtre Custom",
-                            style: TextStyle(
-                              decoration: TextDecoration.underline,
-                            )),
-                      ),
-                      //Selected
-                      FlatButton(
-                        child: ListTile(
-                          title: Text(
-                            "Filtre 1",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          trailing: Icon(Icons.arrow_forward_ios,
-                              color: Colors.white),
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            post = fetchPost();
-                            Navigator.pop(context, true);
-                          });
-                        },
-                        color: Theme.of(context).primaryColor,
-                      ),
-
-                      // Not Selected
-                      FlatButton(
-                        child: ListTile(
-                          title: Text("Filtre 2"),
-                          trailing: Icon(Icons.arrow_forward_ios,
-                              color: Theme.of(context).primaryColor),
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            post = fetchPost();
-                            Navigator.pop(context, true);
-                          });
-                        },
-                      ),
-                      FlatButton(
-                        child: ListTile(
-                          title: Text("Filtre 3"),
-                          trailing: Icon(Icons.arrow_forward_ios,
-                              color: Theme.of(context).primaryColor),
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            post = fetchPost();
-                            Navigator.pop(context, true);
-                          });
-                        },
-                      ),
-                      FlatButton(
-                        child: ListTile(
-                          title: Text("Filtre 4"),
-                          trailing: Icon(Icons.arrow_forward_ios,
-                              color: Theme.of(context).primaryColor),
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            post = fetchPost();
-                            Navigator.pop(context, true);
-                          });
-                        },
-                      ),
-                      FlatButton(
-                        child: ListTile(
-                          title: Text("Filtre 5"),
-                          trailing: Icon(Icons.arrow_forward_ios,
-                              color: Theme.of(context).primaryColor),
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            post = fetchPost();
-                            Navigator.pop(context, true);
-                          });
-                        },
-                      ),
-                      FlatButton(
-                        child: ListTile(
-                          title: Text("Filtre 3"),
-                          trailing: Icon(Icons.arrow_forward_ios,
-                              color: Theme.of(context).primaryColor),
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            post = fetchPost();
-                            Navigator.pop(context, true);
-                          });
-                        },
-                      ),
-                      FlatButton(
-                        child: ListTile(
-                          title: Text("Filtre 4"),
-                          trailing: Icon(Icons.arrow_forward_ios,
-                              color: Theme.of(context).primaryColor),
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            post = fetchPost();
-                            Navigator.pop(context, true);
-                          });
-                        },
-                      ),
-                      FlatButton(
-                        child: ListTile(
-                          title: Text("Filtre 5"),
-                          trailing: Icon(Icons.arrow_forward_ios,
-                              color: Theme.of(context).primaryColor),
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            post = fetchPost();
-                            Navigator.pop(context, true);
-                          });
-                        },
-                      ),
-                      FlatButton(
-                        child: ListTile(
-                          title: Text("Filtre 3"),
-                          trailing: Icon(Icons.arrow_forward_ios,
-                              color: Theme.of(context).primaryColor),
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            post = fetchPost();
-                            Navigator.pop(context, true);
-                          });
-                        },
-                      ),
-                      FlatButton(
-                        child: ListTile(
-                          title: Text("Filtre 4"),
-                          trailing: Icon(Icons.arrow_forward_ios,
-                              color: Theme.of(context).primaryColor),
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            post = fetchPost();
-                            Navigator.pop(context, true);
-                          });
-                        },
-                      ),
-                      FlatButton(
-                        child: ListTile(
-                          title: Text("Filtre 5"),
-                          trailing: Icon(Icons.arrow_forward_ios,
-                              color: Theme.of(context).primaryColor),
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            post = fetchPost();
-                            Navigator.pop(context, true);
-                          });
-                        },
-                      ),
-                    ],
-                  ));
+              builder: (BuildContext context) => FilterDialog(that: this)
+          );
         },
         backgroundColor: Theme.of(context).primaryColor,
         child: Icon(Icons.more_horiz, color: Colors.white),

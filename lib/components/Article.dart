@@ -34,7 +34,7 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
     super.initState();
     this.animationController = new AnimationController(
       vsync: this,
-      duration: this._Timer,
+      duration: _Timer,
     );
   }
 
@@ -48,9 +48,9 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
             child: Stack(children: <Widget>[
               Container(
                 child: Image.network(
-                  this.data_.urlToImage == null
+                  data_.urlToImage == null
                       ? 'http://placeimg.com/640/480/animals'
-                      : this.data_.urlToImage,
+                      : data_.urlToImage,
                   fit: BoxFit.cover,
                 ),
                 height: 180,
@@ -65,22 +65,14 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
                             color: !fav
                                 ? Theme.of(context).backgroundColor
                                 : Theme.of(context).primaryColor),
-                        onPressed: () {
-                          setState(() {
-                            fav = !fav;
-                          });
-                        },
+                        onPressed: articleController.favButton,
                       ),
                       IconButton(
                           icon: Icon(!push ? Icons.alarm_add : Icons.alarm_on,
                               color: !push
                                   ? Theme.of(context).backgroundColor
                                   : Theme.of(context).primaryColor),
-                          onPressed: () {
-                            setState(() {
-                              push = !push;
-                            });
-                          }),
+                          onPressed: articleController.pushButton),
                       IconButton(
                         icon: Icon(
                           Icons.share,
@@ -88,10 +80,9 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
                         ),
                         onPressed: () {
                           final RenderBox box = context.findRenderObject();
-                          Share.share(
-                              data_.url,
-                              sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size
-                          );
+                          Share.share(data_.url,
+                              sharePositionOrigin:
+                                  box.localToGlobal(Offset.zero) & box.size);
                         },
                       ),
                       Opacity(
@@ -101,9 +92,7 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
                               Icons.check,
                               color: Theme.of(context).primaryColor,
                             ),
-                            onPressed: () {
-                              articleController.shareButton(context);
-                            },
+                            onPressed: () {},
                           ))
                     ])
                   ],
@@ -123,17 +112,13 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
                       (MediaQuery.of(context).size.width * 0.25),
                   child: Column(
                     children: <Widget>[
-                      AutoSizeText(
-                          this.data_.title == null ? '' : this.data_.title,
+                      AutoSizeText(data_.title == null ? '' : data_.title,
                           minFontSize: 15,
                           maxLines: 3,
                           textAlign: TextAlign.justify,
                           style: TextStyle(
                               color: Theme.of(context).textTheme.body1.color)),
-                      Text(
-                          this.data_.source == null
-                              ? 'No Source'
-                              : this.data_.source,
+                      Text(data_.source == null ? 'No Source' : data_.source,
                           style: TextStyle(
                               color: Theme.of(context).primaryColor,
                               fontSize: 10)),
@@ -142,7 +127,7 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
                     crossAxisAlignment: CrossAxisAlignment.start,
                   ),
                 ),
-                Text(this.articleController.convertDate(this.data_.publishedAt),
+                Text(articleController.convertDate(data_.publishedAt),
                     style: TextStyle(
                         color: Theme.of(context).primaryColor, fontSize: 10)),
               ],
@@ -175,7 +160,7 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
                     ],
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   ),
-                  onPressed: this.articleController.animationButton,
+                  onPressed: articleController.animationButton,
                   splashColor: Theme.of(context).primaryColor,
                 ),
                 height: 50,
@@ -207,9 +192,9 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
           ),
           AnimatedContainer(
             child: Text(
-              this.data_.description == null || this.data_.description == ""
-                  ? this.data_.content
-                  : this.data_.description,
+              data_.description == null || data_.description == ""
+                  ? data_.content == null ? "" : data_.content
+                  : data_.description,
               textAlign: TextAlign.justify,
             ),
             margin: showMore ? EdgeInsets.all(0) : EdgeInsets.all(5.0),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter_statusbar_manager/flutter_statusbar_manager.dart';
 
 import 'package:newsy_v2/tabs/Fav.dart';
 import 'package:newsy_v2/tabs/Profil.dart';

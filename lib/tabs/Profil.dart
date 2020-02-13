@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_material_color_picker/flutter_material_color_picker.dart';
 import 'package:newsy_v2/components/ColorButton.dart';
 import 'package:newsy_v2/components/SettingsTitle.dart';
+import 'package:newsy_v2/components/UserData.dart';
 import 'package:newsy_v2/main.dart';
 
 class Profil extends StatefulWidget {
@@ -18,7 +19,8 @@ class ProfilState extends State<Profil> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: ListView(children: <Widget>[
-      SettingsTitle(title: "Info Profil"),
+      SettingsTitle(title: "Info Utilisateur"),
+      UserData(),
       FlatButton(
         color: Theme.of(context).primaryColor,
         child: Container(
@@ -43,13 +45,9 @@ class ProfilState extends State<Profil> {
               ThemeSwitcher.of(context).switchTheme(ThemeData(
                 primaryColor: Theme.of(context).primaryColor,
                 accentColor: Theme.of(context).accentColor,
-
                 backgroundColor:
                     value ? Color.fromRGBO(30, 30, 30, 1) : Colors.white,
                 brightness: value ? Brightness.dark : Brightness.light,
-//                  textTheme: TextTheme(
-//                      body1: TextStyle(
-//                          color: !value ? Colors.black : Colors.white))
               ));
             },
             activeTrackColor: Theme.of(context).primaryColor,
@@ -64,13 +62,24 @@ class ProfilState extends State<Profil> {
               showDialog(
                   context: context,
                   builder: (BuildContext context) => new AlertDialog(
-                        content: Row(
+                        content: Wrap(
+                          alignment: WrapAlignment.spaceEvenly,
                           children: <Widget>[
                             ColorButton(color: Colors.purple),
+                            ColorButton(color: Colors.pinkAccent),
                             ColorButton(color: Colors.red),
-                            ColorButton(color: Colors.blue),
+                            ColorButton(color: Color.fromRGBO(255, 99, 71, 1)),
+                            ColorButton(color: Color.fromRGBO(255, 125, 125, 1)),
+                            ColorButton(color: Colors.orange),
+                            ColorButton(color: Colors.yellow),
+                            ColorButton(color: Color.fromRGBO(125, 255, 125, 1)),
+                            ColorButton(color: Colors.lightGreen),
                             ColorButton(color: Colors.green),
-                            ColorButton(color: Colors.pink),
+                            ColorButton(color: Colors.cyan),
+                            ColorButton(color: Colors.blue),
+                            ColorButton(color: Color.fromRGBO(125, 125, 255, 1)),
+                            ColorButton(color: Colors.deepPurple),
+                            ColorButton(color: Colors.grey)
                           ],
                         ),
                       ));

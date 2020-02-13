@@ -17,7 +17,7 @@ class SettingsTitle extends StatelessWidget {
         ),
       ),
       child: ListTile(
-        title: Text(title.toUpperCase(),
+        title: Text(title,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22, color: Theme.of(context).primaryColor)),
       ),
     );
