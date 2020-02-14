@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:newsy_v2/generated/l10n.dart';
 
 class FilterDialog extends StatelessWidget {
   final that;
@@ -11,13 +12,13 @@ class FilterDialog extends StatelessWidget {
     // TODO: implement build
     return SimpleDialog(
       title: Text(
-        "Choisir un filtre",
+        S.of(context).filterSelect,
         style: TextStyle(color: Theme.of(context).primaryColor),
       ),
       children: <Widget>[
         // default
         ListTile(
-          title: Text("Filtre par default",
+          title: Text(S.of(context).filterDefault,
               style: TextStyle(
                 decoration: TextDecoration.underline,
               )),
@@ -36,7 +37,7 @@ class FilterDialog extends StatelessWidget {
           },
         ),
         ListTile(
-          title: Text("Filtre Custom",
+          title: Text(S.of(context).filterCustom,
               style: TextStyle(
                 decoration: TextDecoration.underline,
               )),
@@ -73,25 +74,25 @@ class FilterDialog extends StatelessWidget {
             });
           },
         ),
-        ListView.builder(
-          shrinkWrap: true,
-          itemCount: 5,
-          itemBuilder: (context, item) {
-            return FlatButton(
-              child: ListTile(
-                title: Text("Filtre " + item.toString()),
-                trailing: Icon(Icons.arrow_forward_ios,
-                    color: Theme.of(context).primaryColor),
-              ),
-              onPressed: () {
-                that.setState(() {
-                  that.post = that.fetchPost();
-                  Navigator.pop(context, true);
-                });
-              },
-            );
-          },
-        ),
+//        ListView.builder(
+//          shrinkWrap: true,
+//          itemCount: 5,
+//          itemBuilder: (context, item) {
+//            return FlatButton(
+//              child: ListTile(
+//                title: Text("Filtre " + item.toString()),
+//                trailing: Icon(Icons.arrow_forward_ios,
+//                    color: Theme.of(context).primaryColor),
+//              ),
+//              onPressed: () {
+//                that.setState(() {
+//                  that.post = that.fetchPost();
+//                  Navigator.pop(context, true);
+//                });
+//              },
+//            );
+//          },
+//        ),
         FlatButton(
           child: ListTile(
             title: Text("Filtre 3"),

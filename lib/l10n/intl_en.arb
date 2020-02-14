@@ -1,0 +1,38 @@
+{
+  "actualLocale": "en",
+  "articleShowMore": "Show description",
+  "articleReadArticle": "Read article",
+  "articleDateInYear": "Il y a {year} an(s)",
+  "articleDateInMonth": "Il y a {month} mois",
+  "articleDateInDays": "Il y a {day} jour",
+  "articleDateInHours": "Il y a {hours} heure(s)",
+  "articleDateInMinutes": "Il y a {minutes} minute(s)",
+  "articleNoSource": "Unknow source",
+  "articleNoDesc": "No description",
+
+  "filterSelect" : "Choose a filter",
+  "filterDefault" : "Default filter",
+  "filterCustom" : "Custom filter",
+
+  "snackBarReminderSet": "Reminder set",
+  "snackBarReminderUnset": "Reminder deleted",
+  "snackBarFavoritesSet": "Article add to favorite",
+  "snackBarFavoritesUnset": "Article deleted from favorite",
+
+  "profilUser": "User info",
+  "profilUpdateUsername": "Change your username",
+  "profilUpdateMail": "Change your mail",
+  "profilUpdateAvatar": "Change your avatar",
+  "profilUpdatePassword": "Change your password",
+  "profilDisconnect": "Disconnect",
+  "profilThemeTitle": "Theme",
+  "profilDarkTheme": "Night mode",
+  "profilColorSelect": "Main color",
+  "profilLangTitle": "Language",
+  "profilLangLabel": "Choose a Language",
+  "profilLangFr":"Français",
+  "profilLangEn":"English",
+  "profilLangDe":"Deutsch",
+  "profilLangEs":"Español",
+  "profilLangJp":"日本の"
+}

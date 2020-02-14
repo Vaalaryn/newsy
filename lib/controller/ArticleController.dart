@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:newsy_v2/generated/l10n.dart';
 import 'package:newsy_v2/screen/webPageScreen.dart';
 import 'package:share/share.dart';
 
@@ -37,8 +38,9 @@ class ArticleController {
       backgroundColor: Theme.of(that.context).primaryColor,
       duration: Duration(milliseconds: 650),
       content: Text(that.fav
-          ? "Article ajouté au favoris"
-          : "Article supprimé des favoris"),
+          ? S.of(that.context).snackBarFavoritesSet
+          : S.of(that.context).snackBarFavoritesUnset
+      ),
     ));
   }
 
@@ -50,8 +52,9 @@ class ArticleController {
       backgroundColor: Theme.of(that.context).primaryColor,
       duration: Duration(milliseconds: 650),
       content: Text(that.push
-          ? "Rappel ajouté"
-          : "Rappel supprimé"),
+          ? S.of(that.context).snackBarReminderSet
+          : S.of(that.context).snackBarReminderUnset
+      ),
     ));
   }
 
@@ -66,6 +69,7 @@ class ArticleController {
     DateTime dateTime = DateFormat("yyyy-MM-dd'T'hh:mm:ss'Z'").parse(date);
     var deltaTime = now.difference(dateTime).inMinutes;
     String msg;
+    // TODO : Message avec i18n
     if (deltaTime < 60) {
       msg = 'il y a $deltaTime minutes';
     } else if (deltaTime < 720) {

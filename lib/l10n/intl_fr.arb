@@ -1,0 +1,38 @@
+{
+  "actualLocale": "fr",
+  "articleShowMore": "En savoir plus",
+  "articleReadArticle": "Lire l'article",
+  "articleDateInYear": "Il y a {year} an(s)",
+  "articleDateInMonth": "Il y a {month} mois",
+  "articleDateInDays": "Il y a {day} jour",
+  "articleDateInHours": "Il y a {hours} heure(s)",
+  "articleDateInMinutes": "Il y a {minutes} minute(s)",
+  "articleNoSource": "Pas de source",
+  "articleNoDesc": "Pas de source",
+
+  "filterSelect" : "Choisir un filtre",
+  "filterDefault" : "Filtre par default",
+  "filterCustom" : "Filtre perso",
+
+  "snackBarReminderSet": "Rappel ajouté",
+  "snackBarReminderUnset": "Rappel supprimé",
+  "snackBarFavoritesSet": "Article ajouté aux favoris",
+  "snackBarFavoritesUnset": "Article supprimé des favoris",
+
+  "profilUser": "Info Profil",
+  "profilUpdateUsername": "Modifier votre pseudo",
+  "profilUpdateMail": "Modifier votre mail",
+  "profilUpdateAvatar": "Modifier votre avatar",
+  "profilUpdatePassword": "Modifier votre mot de passe",
+  "profilDisconnect": "Déconnexion",
+  "profilThemeTitle": "Theme",
+  "profilDarkTheme": "Mode nuit",
+  "profilColorSelect": "Couleur principale",
+  "profilLangTitle": "Langue",
+  "profilLangLabel": "Choisir une langue",
+  "profilLangFr":"Français",
+  "profilLangEn":"English",
+  "profilLangDe":"Deutsch",
+  "profilLangEs":"Español",
+  "profilLangJp":"日本の"
+}

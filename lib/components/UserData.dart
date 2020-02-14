@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:newsy_v2/generated/l10n.dart';
 
 class UserData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Padding(
         padding: EdgeInsets.fromLTRB(0, 32, 0, 10),
         child: Column(
@@ -66,7 +66,7 @@ class UserData extends StatelessWidget {
             ),
             // TODO Changement info
             ListTile(
-              title: Text("Modifier votre pseudo"),
+              title: Text(S.of(context).profilUpdateUsername),
               trailing: IconButton(
                 icon: Icon(
                   Icons.edit,
@@ -76,7 +76,7 @@ class UserData extends StatelessWidget {
               ),
             ),
             ListTile(
-              title: Text("Modifier votre mail"),
+              title: Text(S.of(context).profilUpdateMail),
               trailing: IconButton(
                 icon: Icon(
                   Icons.edit,
@@ -86,7 +86,7 @@ class UserData extends StatelessWidget {
               ),
             ),
             ListTile(
-              title: Text("Modifier votre avatar"),
+              title: Text(S.of(context).profilUpdateAvatar),
               trailing: IconButton(
                 icon: Icon(
                   Icons.edit,
@@ -96,7 +96,7 @@ class UserData extends StatelessWidget {
               ),
             ),
             ListTile(
-              title: Text("Modifier votre mot de passe"),
+              title: Text(S.of(context).profilUpdatePassword),
               trailing: IconButton(
                 icon: Icon(
                   Icons.edit,

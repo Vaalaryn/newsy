@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:newsy_v2/controller/ArticleController.dart';
+import 'package:newsy_v2/generated/l10n.dart';
 import 'package:share/share.dart';
 
 class Article extends StatefulWidget {
@@ -118,7 +119,7 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
                           textAlign: TextAlign.justify,
                           style: TextStyle(
                               color: Theme.of(context).textTheme.body1.color)),
-                      Text(data_.source == null ? 'No Source' : data_.source,
+                      Text(data_.source == null ? S.of(context).articleNoSource : data_.source,
                           style: TextStyle(
                               color: Theme.of(context).primaryColor,
                               fontSize: 10)),
@@ -153,7 +154,7 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
                           },
                           child: Icon(Icons.keyboard_arrow_right,
                               color: Theme.of(context).primaryColor)),
-                      Text('En Savoir Plus',
+                      Text(S.of(context).articleShowMore,
                           style: TextStyle(
                               color: Theme.of(context).textTheme.body1.color,
                               fontSize: 16))
@@ -171,7 +172,7 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
                   child: Row(
                     children: <Widget>[
                       Icon(Icons.reply, color: Theme.of(context).primaryColor),
-                      Text("Lire l'article",
+                      Text(S.of(context).articleReadArticle,
                           style: TextStyle(
                               color: Theme.of(context).textTheme.body1.color,
                               fontSize: 16))
@@ -193,7 +194,7 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
           AnimatedContainer(
             child: Text(
               data_.description == null || data_.description == ""
-                  ? data_.content == null ? "" : data_.content
+                  ? data_.content == null ? S.of(context).articleNoDesc : data_.content
                   : data_.description,
               textAlign: TextAlign.justify,
             ),
