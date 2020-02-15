@@ -24,7 +24,7 @@
   "profilUpdateMail": "Change your mail",
   "profilUpdateAvatar": "Change your avatar",
   "profilUpdatePassword": "Change your password",
-  "profilDisconnect": "Disconnect",
+  "profilDisconnect": "Logout",
   "profilThemeTitle": "Theme",
   "profilDarkTheme": "Night mode",
   "profilColorSelect": "Main color",

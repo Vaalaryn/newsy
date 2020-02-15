@@ -46,7 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "filterSelect" : MessageLookupByLibrary.simpleMessage("Choose a filter"),
     "profilColorSelect" : MessageLookupByLibrary.simpleMessage("Main color"),
     "profilDarkTheme" : MessageLookupByLibrary.simpleMessage("Night mode"),
-    "profilDisconnect" : MessageLookupByLibrary.simpleMessage("Disconnect"),
+    "profilDisconnect" : MessageLookupByLibrary.simpleMessage("Logout"),
     "profilLangDe" : MessageLookupByLibrary.simpleMessage("Deutsch"),
     "profilLangEn" : MessageLookupByLibrary.simpleMessage("English"),
     "profilLangEs" : MessageLookupByLibrary.simpleMessage("Español"),
