@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:newsy_v2/generated/l10n.dart';
-import 'package:newsy_v2/screen/mainScreen.dart';
+import 'package:newsy_v2/screen/MainScreen.dart';
 
 var _PrimaryColor = Color.fromRGBO(255, 99, 71, 1);
 var _AccentColor = Color.fromRGBO(255, 99, 71, 1);

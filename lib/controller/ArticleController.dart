@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:newsy_v2/generated/l10n.dart';
-import 'package:newsy_v2/screen/webPageScreen.dart';
+import 'package:newsy_v2/screen/WebPageScreen.dart';
 import 'package:share/share.dart';
 
 class ArticleController {
