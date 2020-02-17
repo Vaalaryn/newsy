@@ -21,12 +21,13 @@ class NewsState extends State<News> with AutomaticKeepAliveClientMixin<News> {
   bool get wantKeepAlive => true;
 
   var post;
+  String actualUrl;
 
-  Future<PostRequest> fetchPost() async {
-    final response = await http.post('http://10.176.134.14' +
-        '/fr/api/newsy?token=RjGoRzoberAVObNnI8A8rR&mail=brice.bitot@neuf.fra&endpoint=top-headlines&params={"country": "fr"}');
+  Future<PostRequest> fetchPost(String url) async {
+    final response = await http.post('http://gendalim.fr:8080' + url);
     debugPrint(response.statusCode.toString());
     if (response.statusCode == 200) {
+      actualUrl = url;
       return PostRequest.fromJson(json.decode(response.body));
     } else {
       throw Exception('Failed to load post');
@@ -35,6 +36,7 @@ class NewsState extends State<News> with AutomaticKeepAliveClientMixin<News> {
 
   void initState() {
     debugPrint("Init");
+    actualUrl = '/fr/api/newsy?token=RjGoRzoberAVObNnI8A8rR&mail=brice.bitot@neuf.fra&endpoint=top-headlines&params={"country": "jp"}';
 //    post = fetchPost();
   }
 

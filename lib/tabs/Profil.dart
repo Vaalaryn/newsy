@@ -17,9 +17,37 @@ class Profil extends StatefulWidget {
 class ProfilState extends State<Profil> {
   static bool isSwitched = false;
 
+  List<Color> colorButton = [
+    Colors.purple,
+    Colors.pinkAccent,
+    Colors.red,
+    Color.fromRGBO(255, 99, 71, 1),
+    Color.fromRGBO(255, 125, 125, 1),
+    Colors.orange,
+    Colors.yellow,
+    Color.fromRGBO(125, 255, 125, 1),
+    Colors.lightGreen,
+    Colors.green,
+    Colors.cyan,
+    Colors.blue,
+    Color.fromRGBO(125, 125, 255, 1),
+    Colors.deepPurple,
+    Colors.grey
+  ];
+
+  List<Widget> _buildColorButton(BuildContext context) {
+    var colorsGroup = List<Widget>();
+
+    colorButton
+        .forEach((color) => {colorsGroup.add(ColorButton(color: color))});
+
+    return colorsGroup;
+  }
+
   @override
   Widget build(BuildContext context) {
     var dropValue = S.of(context).actualLocale;
+
     return Scaffold(
         body: ListView(children: <Widget>[
       SettingsTitle(title: S.of(context).profilUser),
@@ -67,26 +95,7 @@ class ProfilState extends State<Profil> {
                   builder: (BuildContext context) => new AlertDialog(
                         content: Wrap(
                           alignment: WrapAlignment.spaceEvenly,
-                          children: <Widget>[
-                            ColorButton(color: Colors.purple),
-                            ColorButton(color: Colors.pinkAccent),
-                            ColorButton(color: Colors.red),
-                            ColorButton(color: Color.fromRGBO(255, 99, 71, 1)),
-                            ColorButton(
-                                color: Color.fromRGBO(255, 125, 125, 1)),
-                            ColorButton(color: Colors.orange),
-                            ColorButton(color: Colors.yellow),
-                            ColorButton(
-                                color: Color.fromRGBO(125, 255, 125, 1)),
-                            ColorButton(color: Colors.lightGreen),
-                            ColorButton(color: Colors.green),
-                            ColorButton(color: Colors.cyan),
-                            ColorButton(color: Colors.blue),
-                            ColorButton(
-                                color: Color.fromRGBO(125, 125, 255, 1)),
-                            ColorButton(color: Colors.deepPurple),
-                            ColorButton(color: Colors.grey)
-                          ],
+                          children: _buildColorButton(context),
                         ),
                       ));
             }),
@@ -109,7 +118,7 @@ class ProfilState extends State<Profil> {
                   ],
                 )),
             DropdownMenuItem(
-                value: 'en',
+                value: 'gb',
                 child: Row(
                   children: <Widget>[
                     Flags.getMiniFlag('GB', null, 30),
