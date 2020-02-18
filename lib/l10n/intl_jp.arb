@@ -1,1 +1,38 @@
-{}
+{
+  "actualLocale": "jp",
+  "articleShowMore": "詳細",
+  "articleReadArticle": "記事を読む",
+  "articleDateInYear": "Il y a {year} an(s)",
+  "articleDateInMonth": "Il y a {month} mois",
+  "articleDateInDays": "Il y a {day} jour",
+  "articleDateInHours": "Il y a {hours} heure(s)",
+  "articleDateInMinutes": "Il y a {minutes} minute(s)",
+  "articleNoSource": "ソースなし",
+  "articleNoDesc": "説明なし",
+
+  "filterSelect" : "フィルターを選択してください",
+  "filterDefault" : "デフォルトでフィルタリング",
+  "filterCustom" : "パーソナルフィルター",
+
+  "snackBarReminderSet": "通知を追加しました",
+  "snackBarReminderUnset": "リマインダーを削除しました",
+  "snackBarFavoritesSet": "お気に入りに追加された記事",
+  "snackBarFavoritesUnset": "お気に入りから削除された記事",
+
+  "profilUser": "プロフィール情報",
+  "profilUpdateUsername": "ニックネームを変更する",
+  "profilUpdateMail": "メールを修正する",
+  "profilUpdateAvatar": "アバターを編集する",
+  "profilUpdatePassword": "パスワードを変更する",
+  "profilDisconnect": "ログアウト",
+  "profilThemeTitle": "テーマ",
+  "profilDarkTheme": "ナイトモード",
+  "profilColorSelect": "メインカラー",
+  "profilLangTitle": "言語",
+  "profilLangLabel": "言語を選択してください",
+  "profilLangFr":"Français",
+  "profilLangEn":"English",
+  "profilLangDe":"Deutsch",
+  "profilLangEs":"Español",
+  "profilLangJp":"日本の"
+}

@@ -118,7 +118,7 @@ class ProfilState extends State<Profil> {
                   ],
                 )),
             DropdownMenuItem(
-                value: 'gb',
+                value: 'en',
                 child: Row(
                   children: <Widget>[
                     Flags.getMiniFlag('GB', null, 30),
