@@ -37,7 +37,6 @@ class NewsState extends State<News> with AutomaticKeepAliveClientMixin<News> {
   void initState() {
     debugPrint("Init");
     actualUrl = '/fr/api/newsy?token=RjGoRzoberAVObNnI8A8rR&mail=brice.bitot@neuf.fra&endpoint=top-headlines&params={"country": "jp"}';
-//    post = fetchPost();
   }
 
   @override
@@ -56,11 +55,15 @@ class NewsState extends State<News> with AutomaticKeepAliveClientMixin<News> {
                           DataArticle.fromJson(snapshot.data.articles[index]));
                 },
               );
-            } else {
+            } else if(snapshot.connectionState == ConnectionState.waiting) {
               return Center(
                   child: ColorLoader(
                       colors: [Theme.of(context).primaryColor],
                       duration: Duration(days: 365)));
+            }else {
+              return Center(
+                child: Text(""),
+              );
             }
           }),
       floatingActionButton: FloatingActionButton(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:newsy_v2/generated/l10n.dart';
+import 'package:newsy_v2/screen/LoginScreen.dart';
 import 'package:newsy_v2/screen/MainScreen.dart';
 
 var _PrimaryColor = Color.fromRGBO(255, 99, 71, 1);
@@ -90,7 +91,7 @@ class MyApp extends StatelessWidget {
         ],
       supportedLocales: S.delegate.supportedLocales,
       theme: ThemeSwitcher.of(context).myTheme,
-      home: MainScreen(),
+      home: LoginScreen(),
     );
   }
 }

@@ -9,8 +9,8 @@ class FilterDialog extends StatelessWidget {
   FilterDialog({key: Key, this.that});
 
   List<List> _buildFilter = [
-    ['/fr/api/newsy?token=RjGoRzoberAVObNnI8A8rR&mail=brice.bitot@neuf.fra&endpoint=top-headlines&params={"country": "fr"}', 'Filtre 1'],
-    ['/fr/api/newsy?token=RjGoRzoberAVObNnI8A8rR&mail=brice.bitot@neuf.fra&endpoint=top-headlines&params={"country": "us"}', 'Filtre 2']
+    ['/fr/api/newsy?token=RjGoRzoberAVObNnI8A8rR&mail=brice.bitot@neuf.fra&endpoint=top-headlines&params={"country": "fr"}', 'Filtre FR'],
+    ['/fr/api/newsy?token=RjGoRzoberAVObNnI8A8rR&mail=brice.bitot@neuf.fra&endpoint=top-headlines&params={"country": "us"}', 'Filtre US']
   ];
 
   List<Widget> _buildFilterButton(BuildContext context){
@@ -39,7 +39,7 @@ class FilterDialog extends StatelessWidget {
                 decoration: TextDecoration.underline,
               )),
         ),
-        FilterButton(isSelected: that.actualUrl == '/fr/api/newsy?token=RjGoRzoberAVObNnI8A8rR&mail=brice.bitot@neuf.fra&endpoint=top-headlines&params={"country": "jp"}',label: "Filtre default",that: that,url: '/fr/api/newsy?token=RjGoRzoberAVObNnI8A8rR&mail=brice.bitot@neuf.fra&endpoint=top-headlines&params={"country": "jp"}'),
+        FilterButton(isSelected: that.actualUrl == '/fr/api/newsy?token=RjGoRzoberAVObNnI8A8rR&mail=brice.bitot@neuf.fra&endpoint=top-headlines&params={"country": "jp"}',label: "Filtre default(JP)",that: that,url: '/fr/api/newsy?token=RjGoRzoberAVObNnI8A8rR&mail=brice.bitot@neuf.fra&endpoint=top-headlines&params={"country": "jp"}'),
         ListTile(
           title: Text(S.of(context).filterCustom,
               style: TextStyle(

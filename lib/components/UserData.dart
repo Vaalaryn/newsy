@@ -51,13 +51,13 @@ class UserData extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 20),
-                    child: Text("50",
+                    child: Text("15",
                         style: TextStyle(fontSize: 18),
                         textAlign: TextAlign.center),
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 20),
-                    child: Text("50",
+                    child: Text("5",
                         style: TextStyle(fontSize: 18),
                         textAlign: TextAlign.center),
                   ),

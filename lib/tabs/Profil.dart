@@ -165,8 +165,8 @@ class ProfilState extends State<Profil> {
           onChanged: (item) {
             setState(() {
               dropValue = item;
+              S.load(Locale(item, ''));
             });
-            S.load(Locale(item, ''));
           },
         ),
       ),
