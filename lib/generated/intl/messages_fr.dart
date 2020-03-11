@@ -21,23 +21,38 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m0(day) => "Il y a ${day} jour";
 
-  static m1(hours) => "Il y a ${hours} heure(s)";
+  static m1(day) => "Il y a ${day} jours";
 
-  static m2(minutes) => "Il y a ${minutes} minute(s)";
+  static m2(hours) => "Il y a ${hours} heure";
 
-  static m3(month) => "Il y a ${month} mois";
+  static m3(hours) => "Il y a ${hours} heures";
 
-  static m4(year) => "Il y a ${year} an(s)";
+  static m4(minutes) => "Il y a ${minutes} minute";
+
+  static m5(minutes) => "Il y a ${minutes} minutes";
+
+  static m6(month) => "Il y a ${month} mois";
+
+  static m7(month) => "Il y a ${month} mois";
+
+  static m8(year) => "Il y a ${year} an";
+
+  static m9(year) => "Il y a ${year} ans";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "actualLocale" : MessageLookupByLibrary.simpleMessage("fr"),
-    "articleDateInDays" : m0,
-    "articleDateInHours" : m1,
-    "articleDateInMinutes" : m2,
-    "articleDateInMonth" : m3,
-    "articleDateInYear" : m4,
-    "articleNoDesc" : MessageLookupByLibrary.simpleMessage("Pas de source"),
+    "articleDateInDay" : m0,
+    "articleDateInDays" : m1,
+    "articleDateInHour" : m2,
+    "articleDateInHours" : m3,
+    "articleDateInMinute" : m4,
+    "articleDateInMinutes" : m5,
+    "articleDateInMonth" : m6,
+    "articleDateInMonths" : m7,
+    "articleDateInYear" : m8,
+    "articleDateInYears" : m9,
+    "articleNoDesc" : MessageLookupByLibrary.simpleMessage("Pas de description"),
     "articleNoSource" : MessageLookupByLibrary.simpleMessage("Pas de source"),
     "articleReadArticle" : MessageLookupByLibrary.simpleMessage("Lire l\'article"),
     "articleShowMore" : MessageLookupByLibrary.simpleMessage("En savoir plus"),

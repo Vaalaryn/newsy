@@ -58,8 +58,17 @@ class S {
 
   String articleDateInYear(dynamic year) {
     return Intl.message(
-      'Il y a $year an(s)',
+      'Il y a $year an',
       name: 'articleDateInYear',
+      desc: '',
+      args: [year],
+    );
+  }
+
+  String articleDateInYears(dynamic year) {
+    return Intl.message(
+      'Il y a $year ans',
+      name: 'articleDateInYears',
       desc: '',
       args: [year],
     );
@@ -74,27 +83,63 @@ class S {
     );
   }
 
-  String articleDateInDays(dynamic day) {
+  String articleDateInMonths(dynamic month) {
+    return Intl.message(
+      'Il y a $month mois',
+      name: 'articleDateInMonths',
+      desc: '',
+      args: [month],
+    );
+  }
+
+  String articleDateInDay(dynamic day) {
     return Intl.message(
       'Il y a $day jour',
+      name: 'articleDateInDay',
+      desc: '',
+      args: [day],
+    );
+  }
+
+  String articleDateInDays(dynamic day) {
+    return Intl.message(
+      'Il y a $day jours',
       name: 'articleDateInDays',
       desc: '',
       args: [day],
     );
   }
 
+  String articleDateInHour(dynamic hours) {
+    return Intl.message(
+      'Il y a $hours heure',
+      name: 'articleDateInHour',
+      desc: '',
+      args: [hours],
+    );
+  }
+
   String articleDateInHours(dynamic hours) {
     return Intl.message(
-      'Il y a $hours heure(s)',
+      'Il y a $hours heures',
       name: 'articleDateInHours',
       desc: '',
       args: [hours],
     );
   }
 
+  String articleDateInMinute(dynamic minutes) {
+    return Intl.message(
+      'Il y a $minutes minute',
+      name: 'articleDateInMinute',
+      desc: '',
+      args: [minutes],
+    );
+  }
+
   String articleDateInMinutes(dynamic minutes) {
     return Intl.message(
-      'Il y a $minutes minute(s)',
+      'Il y a $minutes minutes',
       name: 'articleDateInMinutes',
       desc: '',
       args: [minutes],
@@ -112,7 +157,7 @@ class S {
 
   String get articleNoDesc {
     return Intl.message(
-      'Pas de source',
+      'Pas de description',
       name: 'articleNoDesc',
       desc: '',
       args: [],
