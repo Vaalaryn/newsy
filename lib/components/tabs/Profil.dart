@@ -4,41 +4,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_material_color_picker/flutter_material_color_picker.dart';
-import 'package:newsy_v2/components/ColorButton.dart';
-import 'package:newsy_v2/components/SettingsTitle.dart';
-import 'package:newsy_v2/components/UserData.dart';
+import 'package:newsy_v2/components/widget/ColorButton.dart';
+import 'package:newsy_v2/components/widget/SettingsTitle.dart';
+import 'package:newsy_v2/components/widget/UserData.dart';
+import 'package:newsy_v2/config/AllColors.dart';
 import 'package:newsy_v2/generated/l10n.dart';
 import 'package:newsy_v2/main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Profil extends StatefulWidget {
   createState() => ProfilState();
 }
 
 class ProfilState extends State<Profil> {
-  static bool isSwitched = false;
-
-  List<Color> colorButton = [
-    Colors.purple,
-    Colors.pinkAccent,
-    Colors.red,
-    Color.fromRGBO(255, 99, 71, 1),
-    Color.fromRGBO(255, 125, 125, 1),
-    Colors.orange,
-    Colors.yellow,
-    Color.fromRGBO(125, 255, 125, 1),
-    Colors.lightGreen,
-    Colors.green,
-    Colors.cyan,
-    Colors.blue,
-    Color.fromRGBO(125, 125, 255, 1),
-    Colors.deepPurple,
-    Colors.grey
-  ];
-
   List<Widget> _buildColorButton(BuildContext context) {
     var colorsGroup = List<Widget>();
 
-    colorButton
+    AllColor.allColors
         .forEach((color) => {colorsGroup.add(ColorButton(color: color))});
 
     return colorsGroup;
@@ -46,6 +28,7 @@ class ProfilState extends State<Profil> {
 
   @override
   Widget build(BuildContext context) {
+    bool isSwitched = (Theme.of(context).brightness == Brightness.dark);
     var dropValue = S.of(context).actualLocale;
 
     return Scaffold(
@@ -72,6 +55,11 @@ class ProfilState extends State<Profil> {
           trailing: Switch(
             value: isSwitched,
             onChanged: (value) {
+
+              Future<SharedPreferences> prefs = SharedPreferences.getInstance();
+              prefs.then((SharedPreferences prefs) {
+                prefs.setBool('themeB', value);
+              });
               isSwitched = value;
               ThemeSwitcher.of(context).switchTheme(ThemeData(
                 primaryColor: Theme.of(context).primaryColor,
@@ -164,6 +152,10 @@ class ProfilState extends State<Profil> {
           ],
           onChanged: (item) {
             setState(() {
+              Future<SharedPreferences> prefs = SharedPreferences.getInstance();
+              prefs.then((SharedPreferences prefs) {
+                prefs.setString('lang', item);
+              });
               dropValue = item;
               S.load(Locale(item, ''));
             });

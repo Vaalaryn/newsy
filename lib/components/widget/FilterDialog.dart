@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:newsy_v2/components/FilterButton.dart';
+import 'package:newsy_v2/components/widget/FilterButton.dart';
 import 'package:newsy_v2/generated/l10n.dart';
 
 class FilterDialog extends StatelessWidget {

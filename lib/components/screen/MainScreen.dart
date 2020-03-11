@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:newsy_v2/tabs/Fav.dart';
-import 'package:newsy_v2/tabs/Profil.dart';
-import 'package:newsy_v2/tabs/Filter.dart';
-import 'package:newsy_v2/tabs/News.dart';
+import 'package:newsy_v2/components/tabs/Fav.dart';
+import 'package:newsy_v2/components/tabs/Profil.dart';
+import 'package:newsy_v2/components/tabs/Filter.dart';
+import 'package:newsy_v2/components/tabs/News.dart';
 
 class MainScreen extends StatefulWidget {
 
@@ -57,7 +57,7 @@ class MainScreenState extends State<MainScreen> with SingleTickerProviderStateMi
               ),
               Tab(
                 icon: Icon(
-                  Icons.add,
+                  Icons.star,
                   size: 25,
                 ),
               ),

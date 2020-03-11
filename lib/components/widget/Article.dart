@@ -68,12 +68,12 @@ class _Article extends State<Article> with SingleTickerProviderStateMixin {
                                 : Theme.of(context).primaryColor),
                         onPressed: articleController.favButton,
                       ),
-                      IconButton(
-                          icon: Icon(!push ? Icons.alarm_add : Icons.alarm_on,
-                              color: !push
-                                  ? Theme.of(context).backgroundColor
-                                  : Theme.of(context).primaryColor),
-                          onPressed: articleController.pushButton),
+//                      IconButton(
+//                          icon: Icon(!push ? Icons.alarm_add : Icons.alarm_on,
+//                              color: !push
+//                                  ? Theme.of(context).backgroundColor
+//                                  : Theme.of(context).primaryColor),
+//                          onPressed: articleController.pushButton),
                       IconButton(
                         icon: Icon(
                           Icons.share,

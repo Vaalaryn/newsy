@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:newsy_v2/generated/l10n.dart';
-import 'package:newsy_v2/screen/LoginScreen.dart';
-import 'package:newsy_v2/screen/MainScreen.dart';
+import 'package:newsy_v2/components/screen/LoginScreen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:newsy_v2/config/AllColors.dart';
 
-var _PrimaryColor = Color.fromRGBO(255, 99, 71, 1);
-var _AccentColor = Color.fromRGBO(255, 99, 71, 1);
-var _BackgroundColor = Color.fromRGBO(255, 255, 255, 1);
-
-  ThemeData myTheme = ThemeData(
-      primaryColor: _PrimaryColor,
-      accentColor: _AccentColor,
-      backgroundColor: _BackgroundColor,
-      brightness: Brightness.light,
-      );
+ThemeData myTheme = ThemeData(
+  primaryColor: AllColor.allColors[0],
+  accentColor: AllColor.allColors[0],
+  backgroundColor: Color.fromRGBO(0, 0, 0, 1),
+  brightness: Brightness.light,
+);
 
 void main() {
-  S.load(Locale('fr', ''));
   runApp(
     ThemeSwitcherWidget(
       initialTheme: myTheme,
@@ -37,7 +33,7 @@ class ThemeSwitcher extends InheritedWidget {
 
   static _ThemeSwitcherWidgetState of(BuildContext context) {
     return (context.inheritFromWidgetOfExactType(ThemeSwitcher)
-    as ThemeSwitcher)
+            as ThemeSwitcher)
         .data;
   }
 
@@ -63,6 +59,11 @@ class ThemeSwitcherWidget extends StatefulWidget {
 class _ThemeSwitcherWidgetState extends State<ThemeSwitcherWidget> {
   ThemeData myTheme;
 
+  @override
+  void initState() {
+    super.initState();
+  }
+
   void switchTheme(ThemeData theme) {
     setState(() {
       myTheme = theme;
@@ -80,19 +81,41 @@ class _ThemeSwitcherWidgetState extends State<ThemeSwitcherWidget> {
 }
 
 class MyApp extends StatelessWidget {
+  static bool themeLoad = false;
+
   @override
   Widget build(BuildContext context) {
+    Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+    _prefs.then((SharedPreferences prefs) {
+      if (prefs.containsKey('lang')) {
+        S.load(Locale(prefs.getString('lang'), ''));
+      } else {
+        S.load(Locale('fr', ''));
+      }
+      if (prefs.containsKey('themeC') &&
+          prefs.containsKey('themeB') &&
+          !themeLoad) {
+        ThemeSwitcher.of(context).switchTheme(ThemeData(
+          primaryColor: AllColor.allColors[prefs.getInt('themeC')],
+          accentColor: AllColor.allColors[prefs.getInt('themeC')],
+          backgroundColor:
+              prefs.getBool('themeB') ? Colors.black : Colors.white,
+          brightness:
+              prefs.getBool('themeB') ? Brightness.dark : Brightness.light,
+        ));
+        themeLoad = true;
+      }
+    });
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         S.delegate
-        ],
+      ],
       supportedLocales: S.delegate.supportedLocales,
       theme: ThemeSwitcher.of(context).myTheme,
       home: LoginScreen(),
     );
   }
 }
-

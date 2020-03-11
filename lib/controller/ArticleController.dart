@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:newsy_v2/generated/l10n.dart';
-import 'package:newsy_v2/screen/WebPageScreen.dart';
+import 'package:newsy_v2/components/screen/WebPageScreen.dart';
 import 'package:share/share.dart';
 
 class ArticleController {
@@ -69,24 +69,21 @@ class ArticleController {
     DateTime dateTime = DateFormat("yyyy-MM-dd'T'hh:mm:ss'Z'").parse(date);
     var deltaTime = now.difference(dateTime).inMinutes;
     String msg;
-    // TODO : Message avec i18n
+    // TODO : SEMAINE ?
     if (deltaTime < 60) {
-      msg = 'il y a $deltaTime minutes';
-    } else if (deltaTime < 720) {
+      msg = deltaTime > 1 ? S.of(that.context).articleDateInMinutes(deltaTime) : S.of(that.context).articleDateInMinute(deltaTime);
+    } else if (deltaTime < 1440) {
       deltaTime = (deltaTime / 60).floor();
-      var s = (deltaTime != 1) ? 's' : '';
-      msg = 'il y a $deltaTime heure' + s;
-    } else if (deltaTime < 21600) {
+      msg = deltaTime > 1 ? S.of(that.context).articleDateInHours(deltaTime) : S.of(that.context).articleDateInHour(deltaTime);
+    } else if (deltaTime < 43200) {
       deltaTime = (deltaTime / 1440).floor();
-      var s = (deltaTime != 1) ? 's' : '';
-      msg = 'il y a $deltaTime jour' + s;
-    } else if (deltaTime < 259200) {
+      msg = deltaTime > 1 ? S.of(that.context).articleDateInDays(deltaTime) : S.of(that.context).articleDateInDay(deltaTime);
+    } else if (deltaTime < 525601) {
       deltaTime = (deltaTime / 43200).floor();
-      msg = 'il y a $deltaTime mois';
+      msg = deltaTime > 1 ? S.of(that.context).articleDateInMonths(deltaTime) : S.of(that.context).articleDateInMonth(deltaTime);
     } else {
-      deltaTime = (deltaTime / 518400).floor();
-      var s = (deltaTime != 1) ? 's' : '';
-      msg = 'il y a $deltaTime an' + s;
+      deltaTime = (deltaTime / 525601).floor();
+      msg = deltaTime > 1 ? S.of(that.context).articleDateInYears(deltaTime) : S.of(that.context).articleDateInYear(deltaTime);
     }
     return msg;
   }
