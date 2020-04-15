@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:newsy_v2/generated/l10n.dart';
+import 'package:newsy_v2/model/User.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserData extends StatefulWidget {
@@ -23,8 +24,8 @@ class UserDataState extends State<UserData> {
     super.initState();
     _prefs.then((SharedPreferences prefs) {
       setState(() {
-        this.username = prefs.getString('username');
-        this.mail = prefs.getString('mail');
+        this.username = User.credUsername;
+        this.mail = User.credMail;
 //        debugPrint(jsonDecode("{'fav': [1, 2], 'read': [1]}")['fav']);
 //        this.fav = data['fav'];
 //        this.read = data['read'];

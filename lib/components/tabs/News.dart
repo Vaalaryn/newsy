@@ -5,9 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:newsy_v2/components/widget/Article.dart';
 import 'package:newsy_v2/components/widget/FilterDialog.dart';
+import 'package:newsy_v2/config/Constante.dart';
 import 'package:newsy_v2/factory/DataArticle.dart';
 import 'package:newsy_v2/components/widget/Loader.dart';
 import 'package:newsy_v2/factory/PostRequest.dart';
+import 'package:newsy_v2/model/User.dart';
 
 class News extends StatefulWidget {
   @override
@@ -24,7 +26,7 @@ class NewsState extends State<News> with AutomaticKeepAliveClientMixin<News> {
   String actualUrl;
 
   Future<PostRequest> fetchPost(String url) async {
-    final response = await http.post('http://gendalim.fr:8080' + url);
+    final response = await http.post(Constante.baseApiUrl + url);
     if (response.statusCode == 200) {
       actualUrl = url;
       return PostRequest.fromJson(json.decode(response.body));
@@ -34,7 +36,7 @@ class NewsState extends State<News> with AutomaticKeepAliveClientMixin<News> {
   }
 
   void initState() {
-    actualUrl = '/fr/api/newsy?token=RjGoRzoberAVObNnI8A8rR&mail=brice.bitot@neuf.fra&endpoint=top-headlines&params={"country": "jp"}';
+    actualUrl = '/fr/api/newsy?token=' + User.credToken + '&mail=' + User.credMail + '&endpoint=top-headlines&params={"country": "jp"}';
   }
 
   @override

@@ -1,10 +1,12 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:newsy_v2/components/screen/MainScreen.dart';
 import 'package:newsy_v2/components/screen/SignUpScreen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:newsy_v2/config/Constante.dart';
+import 'package:newsy_v2/model/User.dart';
 
 class LoginScreen extends StatefulWidget {
   createState() => LoginScreenState();
@@ -12,12 +14,14 @@ class LoginScreen extends StatefulWidget {
 
 class LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
-  bool isLoged = false;
+  bool isLogged = false;
+  bool rememberMe = false;
   String password;
   String mail;
 
   Future<String> connect() async {
-    String url = 'http://gendalim.fr:8080/fr/user/connect?mail=' +
+    String url = Constante.baseApiUrl +
+        '/fr/user/connect?mail=' +
         mail +
         '&password=' +
         password;
@@ -29,9 +33,27 @@ class LoginScreenState extends State<LoginScreen> {
     }
   }
 
+  void unlogged() {
+    debugPrint("10connect");
+    setState(() {
+      isLogged = false;
+    });
+  }
+
+  @override
+  void initState() {
+    User.thatLoginPage = this;
+        User.check().then((isRemember) {
+      setState(() {
+        isLogged = isRemember;
+      });
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return isLoged
+    return isLogged
         ? MainScreen()
         : Scaffold(
             body: Container(
@@ -93,6 +115,20 @@ class LoginScreenState extends State<LoginScreen> {
                                 return null;
                               },
                             ),
+                            Row(
+                              children: <Widget>[
+                                Checkbox(
+                                  value: rememberMe,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      rememberMe = value;
+                                    });
+                                  },
+                                  activeColor: Theme.of(context).primaryColor,
+                                ),
+                                Text("Remember me")
+                              ],
+                            ),
                             Container(
                               height: 60,
                             ),
@@ -103,18 +139,16 @@ class LoginScreenState extends State<LoginScreen> {
                                     style: TextStyle(
                                         fontSize: 25, color: Colors.white)),
                                 onPressed: () async {
-                                  final prefs = await SharedPreferences.getInstance();
                                   if (_formKey.currentState.validate()) {
                                     String retour = await connect();
                                     if (retour != "404") {
                                       var retourJson = jsonDecode(retour);
-                                      prefs.setString('username', retourJson['username']);
-                                      prefs.setString('mail', retourJson['mail']);
-                                      prefs.setString('token', retourJson['token']);
-                                      prefs.setString('data', retourJson['data']);
+                                      User.connect(retourJson, rememberMe);
+
+                                      // TODO : faire un module user et faire la lecture du prefs dans le module user avec un check si deja des creds cosntruct du user au debut
                                       FocusScope.of(context)
                                           .requestFocus(new FocusNode());
-                                      this.isLoged = true;
+                                      this.isLogged = true;
                                     } else {}
                                   }
                                 }),

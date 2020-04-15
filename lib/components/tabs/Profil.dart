@@ -10,6 +10,7 @@ import 'package:newsy_v2/components/widget/UserData.dart';
 import 'package:newsy_v2/config/AllColors.dart';
 import 'package:newsy_v2/generated/l10n.dart';
 import 'package:newsy_v2/main.dart';
+import 'package:newsy_v2/model/User.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Profil extends StatefulWidget {
@@ -47,7 +48,7 @@ class ProfilState extends State<Profil> {
                       fontWeight: FontWeight.bold)),
               trailing: Icon(Icons.exit_to_app, color: Colors.white, size: 40),
             )),
-        onPressed: () => {},
+        onPressed: () => User.disconnect(),
       ),
       SettingsTitle(title: S.of(context).profilThemeTitle),
       ListTile(

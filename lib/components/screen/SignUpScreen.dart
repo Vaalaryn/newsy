@@ -16,43 +16,25 @@ class SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Theme
-              .of(context)
-              .backgroundColor,
+          backgroundColor: Theme.of(context).backgroundColor,
           iconTheme:
-          IconThemeData(color: Theme
-              .of(context)
-              .textTheme
-              .body1
-              .color),
+              IconThemeData(color: Theme.of(context).textTheme.body1.color),
           bottom: PreferredSize(
               child: Container(
-                color: Theme
-                    .of(context)
-                    .primaryColor,
+                color: Theme.of(context).primaryColor,
                 height: 4.0,
               ),
               preferredSize: Size.fromHeight(4.0)),
         ),
         body: Container(
             margin: EdgeInsets.fromLTRB(
-                MediaQuery
-                    .of(context)
-                    .size
-                    .width * 0.15,
+                MediaQuery.of(context).size.width * 0.15,
                 0,
-                MediaQuery
-                    .of(context)
-                    .size
-                    .width * 0.15,
+                MediaQuery.of(context).size.width * 0.15,
                 0),
-            width: MediaQuery
-                .of(context)
-                .size
-                .width * 0.7,
+            width: MediaQuery.of(context).size.width * 0.7,
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -86,7 +68,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                         TextFormField(
                           obscureText: true,
                           decoration:
-                          InputDecoration(labelText: "Mot de passe"),
+                              InputDecoration(labelText: "Mot de passe"),
                           validator: (value) {
                             if (value.isEmpty) {
                               return 'Veuillez remplir le champs';
@@ -109,18 +91,16 @@ class SignUpScreenState extends State<SignUpScreen> {
                           height: 60,
                         ),
                         RaisedButton(
-                            color: Theme
-                                .of(context)
-                                .primaryColor,
+                            color: Theme.of(context).primaryColor,
                             padding: EdgeInsets.all(20),
                             child: Text("Inscription",
                                 style: TextStyle(
                                     fontSize: 25, color: Colors.white)),
                             onPressed: () {
                               setState(() {
-                                this.that.isLoged = true;
+                                this.that.isLogged = true;
                               });
-                                  Navigator.pop(context);
+                              Navigator.pop(context);
                             }),
                       ],
                     ),
