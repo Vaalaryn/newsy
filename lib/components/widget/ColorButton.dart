@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_material_color_picker/flutter_material_color_picker.dart';
 import 'package:newsy_v2/config/AllColors.dart';
 import 'package:newsy_v2/main.dart';
+import 'package:newsy_v2/model/User.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ColorButton extends StatefulWidget {
@@ -25,10 +26,7 @@ class ColorButtonState extends State<ColorButton> {
         icon: CircleColor(color: this.color, circleSize: 50),
         onPressed: () async {
 
-          Future<SharedPreferences> prefs = SharedPreferences.getInstance();
-          prefs.then((SharedPreferences prefs) {
-            prefs.setInt('themeC', AllColor.allColors.indexWhere((color) => color == this.color));
-          });
+          User.setThemeC(AllColor.allColors.indexWhere((color) => color == this.color));
 
           Navigator.pop(context);
           ThemeSwitcher.of(context).switchTheme(ThemeData(

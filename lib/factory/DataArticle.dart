@@ -1,4 +1,5 @@
 class DataArticle {
+  var raw;
   var data;
   var source;
   var author;
@@ -11,7 +12,7 @@ class DataArticle {
 
   @override
   DataArticle(
-      {this.source, this.author, this.description, this.publishedAt, this.title, this.url, this.urlToImage, this.content});
+      {this.raw, this.source, this.author, this.description, this.publishedAt, this.title, this.url, this.urlToImage, this.content});
 
   factory DataArticle.fromJson(Map<String, dynamic> json) =>
       _dataArticleToJson(json);
@@ -19,6 +20,7 @@ class DataArticle {
 
 DataArticle _dataArticleToJson(Map<String, dynamic> json) {
   return DataArticle(
+    raw: json,
     source: json['source']['name'] as String,
     author: json['author'] as String,
     title: json['title'] as String,

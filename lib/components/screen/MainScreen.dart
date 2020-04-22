@@ -33,8 +33,8 @@ class MainScreenState extends State<MainScreen> with SingleTickerProviderStateMi
       body: TabBarView(
         children: <Widget>[
           News(),
-          Fav(),
           Filter(),
+          Fav(),
           Profil()
         ],
         controller: controller,

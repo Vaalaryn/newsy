@@ -6,6 +6,7 @@ import 'package:http/http.dart';
 import 'package:newsy_v2/components/screen/MainScreen.dart';
 import 'package:newsy_v2/components/screen/SignUpScreen.dart';
 import 'package:newsy_v2/config/Constante.dart';
+import 'package:newsy_v2/generated/l10n.dart';
 import 'package:newsy_v2/model/User.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -19,13 +20,15 @@ class LoginScreenState extends State<LoginScreen> {
   String password;
   String mail;
 
-  Future<String> connect() async {
-    String url = Constante.baseApiUrl +
-        '/fr/user/connect?mail=' +
-        mail +
-        '&password=' +
-        password;
-    Response response = await post(url);
+  Future<String> connect(String mail, String password) async {
+    String url = Constante.baseApiUrl + '/fr/user/connect';
+    Map<String, String> headers = {"Content-type": "application/json"};
+    Object json = {
+      "mail": mail,
+      "password": password,
+    };
+    Response response =
+        await post(url, headers: headers, body: jsonEncode(json));
     if (response.statusCode == 200) {
       return await response.body;
     } else {
@@ -34,7 +37,6 @@ class LoginScreenState extends State<LoginScreen> {
   }
 
   void unlogged() {
-    debugPrint("10connect");
     setState(() {
       isLogged = false;
     });
@@ -43,7 +45,7 @@ class LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     User.thatLoginPage = this;
-        User.check().then((isRemember) {
+    User.check().then((isRemember) {
       setState(() {
         isLogged = isRemember;
       });
@@ -68,7 +70,7 @@ class LoginScreenState extends State<LoginScreen> {
                     children: <Widget>[
                       Center(
                         child:
-                            Text("Connexion", style: TextStyle(fontSize: 40)),
+                            Text(S.of(context).connexionTitle, style: TextStyle(fontSize: 40)),
                       ),
                       Form(
                         key: _formKey,
@@ -76,20 +78,18 @@ class LoginScreenState extends State<LoginScreen> {
                           children: <Widget>[
                             TextFormField(
                               cursorColor: Theme.of(context).primaryColor,
-                              decoration: InputDecoration(labelText: "Mail"),
+                              decoration: InputDecoration(labelText: S.of(context).connexionLabelMail),
                               keyboardType: TextInputType.emailAddress,
                               validator: (value) {
                                 if (value.isEmpty) {
-                                  return 'Veuillez remplir le champs';
+                                  return S.of(context).inscriptionMsgFieldsEmpty;
                                 }
-                                RegExp regExp = new RegExp(
-                                    r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$",
-                                    caseSensitive: false,
-                                    multiLine: false);
+                                RegExp regExp = new RegExp(Constante.regexMail,
+                                    caseSensitive: false, multiLine: false);
                                 if (regExp.hasMatch(value)) {
                                   this.mail = value;
                                 } else {
-                                  return "Mail non conforme";
+                                  return S.of(context).connexionMsgWrongMail;
                                 }
                                 return null;
                               },
@@ -98,19 +98,19 @@ class LoginScreenState extends State<LoginScreen> {
                               cursorColor: Theme.of(context).primaryColor,
                               obscureText: true,
                               decoration:
-                                  InputDecoration(labelText: "Mot de passe"),
+                                  InputDecoration(labelText: S.of(context).connexionLabelPassword),
                               validator: (value) {
                                 if (value.isEmpty) {
-                                  return 'Veuillez remplir le champs';
+                                  return S.of(context).inscriptionMsgFieldsEmpty;
                                 }
                                 RegExp regExp = new RegExp(
-                                    r"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!#$%&?@])[0-9a-zA-Z!#$%&?@]{8,}$",
+                                    Constante.regexPassword,
                                     caseSensitive: true,
                                     multiLine: false);
                                 if (regExp.hasMatch(value)) {
                                   this.password = value;
                                 } else {
-                                  return "Mot de passe non conforme";
+                                  return S.of(context).connexionMsgWrongPassword;
                                 }
                                 return null;
                               },
@@ -126,7 +126,7 @@ class LoginScreenState extends State<LoginScreen> {
                                   },
                                   activeColor: Theme.of(context).primaryColor,
                                 ),
-                                Text("Remember me")
+                                Text(S.of(context).connexionLabelRememberMe)
                               ],
                             ),
                             Container(
@@ -135,21 +135,42 @@ class LoginScreenState extends State<LoginScreen> {
                             RaisedButton(
                                 color: Theme.of(context).primaryColor,
                                 padding: EdgeInsets.all(20),
-                                child: Text("Connexion",
+                                child: Text(S.of(context).connexionLabelButtonConnexion,
                                     style: TextStyle(
                                         fontSize: 25, color: Colors.white)),
                                 onPressed: () async {
+                                  FocusScope.of(context)
+                                      .requestFocus(new FocusNode());
                                   if (_formKey.currentState.validate()) {
-                                    String retour = await connect();
-                                    if (retour != "404") {
+                                    String retour =
+                                        await connect(this.mail, this.password);
+                                    debugPrint(retour);
+                                    if (retour != "404" && retour != "302") {
                                       var retourJson = jsonDecode(retour);
                                       User.connect(retourJson, rememberMe);
-
-                                      // TODO : faire un module user et faire la lecture du prefs dans le module user avec un check si deja des creds cosntruct du user au debut
-                                      FocusScope.of(context)
-                                          .requestFocus(new FocusNode());
-                                      this.isLogged = true;
-                                    } else {}
+//                                      ThemeSwitcher.of(context).switchTheme(ThemeData(
+//                                        primaryColor: AllColor.allColors[User.ThemeC],
+//                                        accentColor: AllColor.allColors[User.ThemeC],
+//                                        backgroundColor: User.ThemeB ? AllColor.backgroundColor[0] : AllColor.backgroundColor[1],
+//                                        brightness: User.ThemeB ? Brightness.dark : Brightness.light,
+//                                      ));
+                                      setState(() {
+                                        this.isLogged = true;
+                                      });
+                                    } else {
+                                      showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) =>
+                                              AlertDialog(
+                                                content: Text(
+                                                    S.of(context).connexionMsgConnectionError),
+                                                actions: <Widget>[
+                                                  FlatButton(
+                                                      child: Text(S.of(context).connexionCloseError),
+                                                      onPressed: () => Navigator.pop(context))
+                                                ],
+                                              ));
+                                    }
                                   }
                                 }),
                             FlatButton(
@@ -161,7 +182,7 @@ class LoginScreenState extends State<LoginScreen> {
                                             SignUpScreen(this)));
                               },
                               child: Text(
-                                'Inscription',
+                                S.of(context).connexionLabelGoToInscription,
                                 style: TextStyle(
                                     color: Theme.of(context).primaryColor,
                                     decoration: TextDecoration.underline),

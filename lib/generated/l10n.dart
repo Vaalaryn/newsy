@@ -9,25 +9,23 @@ import 'intl/messages_all.dart';
 // **************************************************************************
 
 class S {
-  S(this.localeName);
+  S();
   
   static const AppLocalizationDelegate delegate =
     AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final String name = locale.countryCode.isEmpty ? locale.languageCode : locale.toString();
+    final String name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
     final String localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
-      return S(localeName);
+      return S();
     });
   } 
 
   static S of(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
-
-  final String localeName;
 
   String get actualLocale {
     return Intl.message(
@@ -56,7 +54,7 @@ class S {
     );
   }
 
-  String articleDateInYear(dynamic year) {
+  String articleDateInYear(Object year) {
     return Intl.message(
       'Il y a $year an',
       name: 'articleDateInYear',
@@ -65,7 +63,7 @@ class S {
     );
   }
 
-  String articleDateInYears(dynamic year) {
+  String articleDateInYears(Object year) {
     return Intl.message(
       'Il y a $year ans',
       name: 'articleDateInYears',
@@ -74,7 +72,7 @@ class S {
     );
   }
 
-  String articleDateInMonth(dynamic month) {
+  String articleDateInMonth(Object month) {
     return Intl.message(
       'Il y a $month mois',
       name: 'articleDateInMonth',
@@ -83,7 +81,7 @@ class S {
     );
   }
 
-  String articleDateInMonths(dynamic month) {
+  String articleDateInMonths(Object month) {
     return Intl.message(
       'Il y a $month mois',
       name: 'articleDateInMonths',
@@ -92,7 +90,7 @@ class S {
     );
   }
 
-  String articleDateInDay(dynamic day) {
+  String articleDateInDay(Object day) {
     return Intl.message(
       'Il y a $day jour',
       name: 'articleDateInDay',
@@ -101,7 +99,7 @@ class S {
     );
   }
 
-  String articleDateInDays(dynamic day) {
+  String articleDateInDays(Object day) {
     return Intl.message(
       'Il y a $day jours',
       name: 'articleDateInDays',
@@ -110,7 +108,7 @@ class S {
     );
   }
 
-  String articleDateInHour(dynamic hours) {
+  String articleDateInHour(Object hours) {
     return Intl.message(
       'Il y a $hours heure',
       name: 'articleDateInHour',
@@ -119,7 +117,7 @@ class S {
     );
   }
 
-  String articleDateInHours(dynamic hours) {
+  String articleDateInHours(Object hours) {
     return Intl.message(
       'Il y a $hours heures',
       name: 'articleDateInHours',
@@ -128,7 +126,7 @@ class S {
     );
   }
 
-  String articleDateInMinute(dynamic minutes) {
+  String articleDateInMinute(Object minutes) {
     return Intl.message(
       'Il y a $minutes minute',
       name: 'articleDateInMinute',
@@ -137,7 +135,7 @@ class S {
     );
   }
 
-  String articleDateInMinutes(dynamic minutes) {
+  String articleDateInMinutes(Object minutes) {
     return Intl.message(
       'Il y a $minutes minutes',
       name: 'articleDateInMinutes',
@@ -370,6 +368,222 @@ class S {
       args: [],
     );
   }
+
+  String get inscriptionTitle {
+    return Intl.message(
+      'Inscription',
+      name: 'inscriptionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get inscriptionMsgFieldsEmpty {
+    return Intl.message(
+      'Veuillez remplir le champs',
+      name: 'inscriptionMsgFieldsEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get inscriptionLabelMail {
+    return Intl.message(
+      'Mail',
+      name: 'inscriptionLabelMail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get inscriptionMsgWrongMail {
+    return Intl.message(
+      'Mail non conforme',
+      name: 'inscriptionMsgWrongMail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get inscriptionLabelPseudo {
+    return Intl.message(
+      'Pseudo',
+      name: 'inscriptionLabelPseudo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get inscriptionMsgWrongPseudo {
+    return Intl.message(
+      'Pseudo non conforme',
+      name: 'inscriptionMsgWrongPseudo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get inscriptionLabelMdp {
+    return Intl.message(
+      'Mot de passe',
+      name: 'inscriptionLabelMdp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get inscriptionMsgWrongPassword {
+    return Intl.message(
+      'Mot de passe non conforme',
+      name: 'inscriptionMsgWrongPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get inscriptionLabelConfPassword {
+    return Intl.message(
+      'Confirmation du mot de passe',
+      name: 'inscriptionLabelConfPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get inscriptionMsgWrongConfPassword {
+    return Intl.message(
+      'Confirmation du mot de passe non conforme',
+      name: 'inscriptionMsgWrongConfPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get inscriptionMsgMdpNoMatch {
+    return Intl.message(
+      'Les mots de passe ne correspondent pas',
+      name: 'inscriptionMsgMdpNoMatch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get inscriptionButtonValidation {
+    return Intl.message(
+      'Inscription',
+      name: 'inscriptionButtonValidation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get inscriptionMailAlreadyUsed {
+    return Intl.message(
+      'Email déjà utilisé',
+      name: 'inscriptionMailAlreadyUsed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get inscriptionSuccess {
+    return Intl.message(
+      'Inscription réussi',
+      name: 'inscriptionSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get connexionTitle {
+    return Intl.message(
+      'Connexion',
+      name: 'connexionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get connexionLabelMail {
+    return Intl.message(
+      'Mail',
+      name: 'connexionLabelMail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get connexionLabelPassword {
+    return Intl.message(
+      'Mot de passe',
+      name: 'connexionLabelPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get connexionLabelRememberMe {
+    return Intl.message(
+      'Se souvenir de moi',
+      name: 'connexionLabelRememberMe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get connexionLabelButtonConnexion {
+    return Intl.message(
+      'Connexion',
+      name: 'connexionLabelButtonConnexion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get connexionLabelGoToInscription {
+    return Intl.message(
+      'S\'inscrire',
+      name: 'connexionLabelGoToInscription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get connexionMsgWrongMail {
+    return Intl.message(
+      'Mail non conforme',
+      name: 'connexionMsgWrongMail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get connexionMsgWrongPassword {
+    return Intl.message(
+      'Mot de passe non conforme',
+      name: 'connexionMsgWrongPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get connexionMsgConnectionError {
+    return Intl.message(
+      'Erreur lors de la connexion',
+      name: 'connexionMsgConnectionError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get connexionCloseError {
+    return Intl.message(
+      'OK',
+      name: 'connexionCloseError',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -377,7 +591,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
 
   List<Locale> get supportedLocales {
     return const <Locale>[
-      Locale('de', ''), Locale('en', ''), Locale('es', ''), Locale('fr', ''), Locale('jp', ''),
+      Locale.fromSubtags(languageCode: 'fr'), Locale.fromSubtags(languageCode: 'de'), Locale.fromSubtags(languageCode: 'en'), Locale.fromSubtags(languageCode: 'es'), Locale.fromSubtags(languageCode: 'jp'),
     ];
   }
 

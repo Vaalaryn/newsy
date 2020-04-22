@@ -1,10 +1,9 @@
-import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:newsy_v2/components/screen/UpdatePasswordScreen.dart';
+import 'package:newsy_v2/components/screen/UpdatePseudoScreen.dart';
 import 'package:newsy_v2/generated/l10n.dart';
 import 'package:newsy_v2/model/User.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class UserData extends StatefulWidget {
   @override
@@ -12,7 +11,6 @@ class UserData extends StatefulWidget {
 }
 
 class UserDataState extends State<UserData> {
-  Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   String username;
   String mail;
   var data;
@@ -22,17 +20,6 @@ class UserDataState extends State<UserData> {
   @override
   void initState() {
     super.initState();
-    _prefs.then((SharedPreferences prefs) {
-      setState(() {
-        this.username = User.credUsername;
-        this.mail = User.credMail;
-//        debugPrint(jsonDecode("{'fav': [1, 2], 'read': [1]}")['fav']);
-//        this.fav = data['fav'];
-//        this.read = data['read'];
-//        debugPrint(this.fav);
-//        debugPrint(this.read);
-      });
-    });
   }
 
   @override
@@ -54,14 +41,14 @@ class UserDataState extends State<UserData> {
 //              ),
 //            ),
             Center(
-              child: Text(this.username ?? "username",
+              child: Text(User.credUsername ?? "username",
                   style: TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
                       color: Theme.of(context).primaryColor)),
             ),
             Center(
-              child: Text(this.mail ?? "mail",
+              child: Text(User.credMail ?? "mail",
                   style: TextStyle(color: Colors.grey)),
             ),
             Padding(
@@ -78,22 +65,22 @@ class UserDataState extends State<UserData> {
                 TableRow(children: [
                   Padding(
                     padding: EdgeInsets.only(top: 20),
-                    child: Text(this.fav != null ? this.fav.length.toString() : "-1",
+                    child: Text(
+                        User.getNumberLu() != null
+                            ? User.getNumberLu().toString()
+                            : "-1",
                         style: TextStyle(fontSize: 18),
                         textAlign: TextAlign.center),
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 20),
-                    child: Text(this.read != null ? this.read.length.toString() : "-1",
+                    child: Text(
+                        User.getNumberFav() != null
+                            ? User.getNumberFav().toString()
+                            : "-1",
                         style: TextStyle(fontSize: 18),
                         textAlign: TextAlign.center),
                   ),
-//                  Padding(
-//                    padding: EdgeInsets.only(top: 20),
-//                    child: Text("5",
-//                        style: TextStyle(fontSize: 18),
-//                        textAlign: TextAlign.center),
-//                  ),
                 ])
               ]),
             ),
@@ -104,19 +91,29 @@ class UserDataState extends State<UserData> {
                   Icons.edit,
                   color: Theme.of(context).primaryColor,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => UpdatePseudoScreen()));
+                },
               ),
             ),
-            ListTile(
-              title: Text(S.of(context).profilUpdateMail),
-              trailing: IconButton(
-                icon: Icon(
-                  Icons.edit,
-                  color: Theme.of(context).primaryColor,
-                ),
-                onPressed: () {},
-              ),
-            ),
+//            ListTile(
+//              title: Text(S.of(context).profilUpdateMail),
+//              trailing: IconButton(
+//                icon: Icon(
+//                  Icons.edit,
+//                  color: Theme.of(context).primaryColor,
+//                ),
+//                onPressed: () {
+//                  Navigator.push(
+//                      context,
+//                      MaterialPageRoute(
+//                          builder: (context) => UpdateMailScreen()));
+//                },
+//              ),
+//            ),
 //            ListTile(
 //              title: Text(S.of(context).profilUpdateAvatar),
 //              trailing: IconButton(
@@ -134,7 +131,12 @@ class UserDataState extends State<UserData> {
                   Icons.edit,
                   color: Theme.of(context).primaryColor,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => UpdatePasswordScreen()));
+                },
               ),
             )
           ],

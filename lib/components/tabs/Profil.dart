@@ -11,7 +11,6 @@ import 'package:newsy_v2/config/AllColors.dart';
 import 'package:newsy_v2/generated/l10n.dart';
 import 'package:newsy_v2/main.dart';
 import 'package:newsy_v2/model/User.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Profil extends StatefulWidget {
   createState() => ProfilState();
@@ -56,17 +55,12 @@ class ProfilState extends State<Profil> {
           trailing: Switch(
             value: isSwitched,
             onChanged: (value) {
-
-              Future<SharedPreferences> prefs = SharedPreferences.getInstance();
-              prefs.then((SharedPreferences prefs) {
-                prefs.setBool('themeB', value);
-              });
+              User.setThemeB(value);
               isSwitched = value;
               ThemeSwitcher.of(context).switchTheme(ThemeData(
                 primaryColor: Theme.of(context).primaryColor,
                 accentColor: Theme.of(context).accentColor,
-                backgroundColor:
-                    value ? Color.fromRGBO(30, 30, 30, 1) : Colors.white,
+                backgroundColor: value ? AllColor.backgroundColor[0] : AllColor.backgroundColor[1],
                 brightness: value ? Brightness.dark : Brightness.light,
               ));
             },
@@ -153,10 +147,7 @@ class ProfilState extends State<Profil> {
           ],
           onChanged: (item) {
             setState(() {
-              Future<SharedPreferences> prefs = SharedPreferences.getInstance();
-              prefs.then((SharedPreferences prefs) {
-                prefs.setString('lang', item);
-              });
+              User.setLang(item);
               dropValue = item;
               S.load(Locale(item, ''));
             });

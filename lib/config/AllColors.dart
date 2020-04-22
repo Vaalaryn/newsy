@@ -18,4 +18,9 @@ class AllColor {
     Colors.deepPurple,
     Colors.grey
   ];
+
+  static List<Color> backgroundColor = [
+    Color.fromRGBO(30, 30, 30, 1),
+    Color.fromRGBO(250, 250, 250, 1)
+  ];
 }

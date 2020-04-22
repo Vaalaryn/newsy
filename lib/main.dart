@@ -8,8 +8,8 @@ import 'package:newsy_v2/config/AllColors.dart';
 ThemeData myTheme = ThemeData(
   primaryColor: AllColor.allColors[0],
   accentColor: AllColor.allColors[0],
-  backgroundColor: Color.fromRGBO(0, 0, 0, 1),
-  brightness: Brightness.light,
+  backgroundColor: AllColor.backgroundColor[0],
+  brightness: Brightness.dark
 );
 
 void main() {
@@ -99,7 +99,7 @@ class MyApp extends StatelessWidget {
           primaryColor: AllColor.allColors[prefs.getInt('themeC')],
           accentColor: AllColor.allColors[prefs.getInt('themeC')],
           backgroundColor:
-              prefs.getBool('themeB') ? Colors.black : Colors.white,
+              prefs.getBool('themeB') ? AllColor.backgroundColor[0] : AllColor.backgroundColor[1],
           brightness:
               prefs.getBool('themeB') ? Brightness.dark : Brightness.light,
         ));

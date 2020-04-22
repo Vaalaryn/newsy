@@ -39,5 +39,31 @@
   "profilLangEn":"English",
   "profilLangDe":"Deutsch",
   "profilLangEs":"Español",
-  "profilLangJp":"日本の"
+  "profilLangJp":"日本の",
+
+  "inscriptionTitle": "Inscription",
+  "inscriptionMsgFieldsEmpty": "Veuillez remplir le champs",
+  "inscriptionLabelMail": "Mail",
+  "inscriptionMsgWrongMail": "Mail non conforme",
+  "inscriptionLabelPseudo": "Pseudo",
+  "inscriptionMsgWrongPseudo": "Pseudo non conforme",
+  "inscriptionLabelMdp": "Mot de passe",
+  "inscriptionMsgWrongPassword": "Mot de passe non conforme",
+  "inscriptionLabelConfPassword": "Confirmation du mot de passe",
+  "inscriptionMsgWrongConfPassword": "Confirmation du mot de passe non conforme",
+  "inscriptionMsgMdpNoMatch": "Les mots de passe ne correspondent pas",
+  "inscriptionButtonValidation": "Inscription",
+  "inscriptionMailAlreadyUsed": "Email déjà utilisé",
+  "inscriptionSuccess": "Inscription réussi",
+
+  "connexionTitle": "Connexion",
+  "connexionLabelMail": "Mail",
+  "connexionLabelPassword": "Mot de passe",
+  "connexionLabelRememberMe": "Se souvenir de moi",
+  "connexionLabelButtonConnexion": "Connexion",
+  "connexionLabelGoToInscription": "S'inscrire",
+  "connexionMsgWrongMail": "Mail non conforme",
+  "connexionMsgWrongPassword": "Mot de passe non conforme",
+  "connexionMsgConnectionError": "Erreur lors de la connexion",
+  "connexionCloseError": "OK"
 }
