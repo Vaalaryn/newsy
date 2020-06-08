@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:newsy_v2/config/Constante.dart';
-import 'package:newsy_v2/model/User.dart';
+import 'package:newsy_v2/app/model/User.dart';
 
 class UpdatePseudoScreen extends StatefulWidget {
   createState() => UpdatePseudoState();

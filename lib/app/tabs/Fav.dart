@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:newsy_v2/components/widget/Article.dart';
+import 'package:newsy_v2/app/widget/Article.dart';
 import 'package:newsy_v2/factory/DataArticle.dart';
-import 'package:newsy_v2/model/User.dart';
+import 'package:newsy_v2/app/model/User.dart';
 
 class Fav extends StatelessWidget {
 

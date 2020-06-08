@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:newsy_v2/components/tabs/Fav.dart';
-import 'package:newsy_v2/components/tabs/Profil.dart';
-import 'package:newsy_v2/components/tabs/Filter.dart';
-import 'package:newsy_v2/components/tabs/News.dart';
+import 'package:newsy_v2/app/tabs/Fav.dart';
+import 'package:newsy_v2/app/tabs/Profil.dart';
+import 'package:newsy_v2/app/tabs/Filter.dart';
+import 'package:newsy_v2/app/tabs/News.dart';
 
 class MainScreen extends StatefulWidget {
 

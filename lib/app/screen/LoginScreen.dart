@@ -3,11 +3,11 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
-import 'package:newsy_v2/components/screen/MainScreen.dart';
-import 'package:newsy_v2/components/screen/SignUpScreen.dart';
+import 'package:newsy_v2/app/screen/MainScreen.dart';
+import 'package:newsy_v2/app/screen/SignUpScreen.dart';
 import 'package:newsy_v2/config/Constante.dart';
 import 'package:newsy_v2/generated/l10n.dart';
-import 'package:newsy_v2/model/User.dart';
+import 'package:newsy_v2/app/model/User.dart';
 
 class LoginScreen extends StatefulWidget {
   createState() => LoginScreenState();

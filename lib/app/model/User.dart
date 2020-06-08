@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
-import 'package:newsy_v2/components/screen/LoginScreen.dart';
+import 'package:newsy_v2/app/screen/LoginScreen.dart';
 import 'package:newsy_v2/config/Constante.dart';
 import 'package:newsy_v2/generated/l10n.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -11,6 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class User {
   static List<dynamic> articleFavoris = new List<dynamic>();
   static List<dynamic> articleLu = new List<dynamic>();
+  static List<dynamic> filter = new List<dynamic>();
   static bool ThemeB = Constante.defaultThemeBrightness;
   static int ThemeC = Constante.defaultThemeColor;
   static String Lang = Constante.defaultLang;
@@ -48,6 +49,24 @@ class User {
 
   static deleteToLu(String article) {
     articleFavoris.removeWhere((item) => item == article);
+    updateData();
+  }
+
+  static List<dynamic> getFilter(){
+    return filter;
+  }
+
+  static int getNumberFilter(){
+    return filter.length;
+  }
+
+  static void addFilter(Object el){
+    filter.add(el);
+    updateData();
+  }
+
+  static void deleteFilter(int index){
+    filter.removeAt(index);
     updateData();
   }
 
@@ -105,6 +124,7 @@ class User {
     _credToken = json['token'];
     articleFavoris = jsonDecode(_credData)["fav"];
     articleLu = jsonDecode(_credData)["lu"];
+    filter = jsonDecode(_credData)["filter"];
     setThemeB(jsonDecode(_credData)["settings"]["themeB"]);
     setThemeC(jsonDecode(_credData)["settings"]["themeC"]);
     setLang(jsonDecode(_credData)["settings"]["lang"]);
@@ -129,6 +149,7 @@ class User {
         _credToken = prefs.getString('token');
         articleFavoris = jsonDecode(prefs.getString('data'))["fav"];
         articleLu = jsonDecode(prefs.getString('data'))["lu"];
+        filter = jsonDecode(prefs.getString('data'))["filter"];
         if(prefs.containsKey('lang')){
           setLang(prefs.getString('lang'));
         }
@@ -160,6 +181,9 @@ class User {
       prefs.remove('lang');
       prefs.remove('themeB');
       prefs.remove('themeC');
+      articleFavoris = new List<dynamic>();
+      articleLu = new List<dynamic>();
+      filter = new List<dynamic>();
       thatLoginPage.unlogged();
     });
   }
@@ -168,6 +192,7 @@ class User {
     Object json = {
       "fav": articleFavoris,
       "lu": articleLu,
+      "filter": filter,
       "settings": {"lang": Lang, "themeC": ThemeC, "themeB": ThemeB}
     };
     String data = jsonEncode(json);

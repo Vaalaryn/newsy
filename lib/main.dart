@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:newsy_v2/generated/l10n.dart';
-import 'package:newsy_v2/components/screen/LoginScreen.dart';
+import 'package:newsy_v2/app/screen/LoginScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:newsy_v2/config/AllColors.dart';
 

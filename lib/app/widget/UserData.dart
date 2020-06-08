@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:newsy_v2/components/screen/UpdatePasswordScreen.dart';
-import 'package:newsy_v2/components/screen/UpdatePseudoScreen.dart';
+import 'package:newsy_v2/app/screen/UpdatePasswordScreen.dart';
+import 'package:newsy_v2/app/screen/UpdatePseudoScreen.dart';
 import 'package:newsy_v2/generated/l10n.dart';
-import 'package:newsy_v2/model/User.dart';
+import 'package:newsy_v2/app/model/User.dart';
 
 class UserData extends StatefulWidget {
   @override
@@ -59,6 +59,8 @@ class UserDataState extends State<UserData> {
                       color: Theme.of(context).primaryColor, size: 30),
                   Icon(Icons.star,
                       color: Theme.of(context).primaryColor, size: 30),
+                  Icon(Icons.search,
+                      color: Theme.of(context).primaryColor, size: 30),
 //                  Icon(Icons.alarm_on,
 //                      color: Theme.of(context).primaryColor, size: 30),
                 ]),
@@ -77,6 +79,15 @@ class UserDataState extends State<UserData> {
                     child: Text(
                         User.getNumberFav() != null
                             ? User.getNumberFav().toString()
+                            : "-1",
+                        style: TextStyle(fontSize: 18),
+                        textAlign: TextAlign.center),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 20),
+                    child: Text(
+                        User.getNumberFav() != null
+                            ? User.getNumberFilter().toString()
                             : "-1",
                         style: TextStyle(fontSize: 18),
                         textAlign: TextAlign.center),

@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:newsy_v2/generated/l10n.dart';
-import 'package:newsy_v2/components/screen/WebPageScreen.dart';
-import 'package:newsy_v2/model/User.dart';
+import 'package:newsy_v2/app/screen/WebPageScreen.dart';
+import 'package:newsy_v2/app/model/User.dart';
 import 'package:share/share.dart';
 
 class ArticleController {

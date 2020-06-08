@@ -1,28 +1,29 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:newsy_v2/components/widget/FilterButton.dart';
-import 'package:newsy_v2/config/Constante.dart';
+import 'package:newsy_v2/app/widget/FilterButton.dart';
 import 'package:newsy_v2/generated/l10n.dart';
-import 'package:newsy_v2/model/User.dart';
+import 'package:newsy_v2/app/model/User.dart';
 
 class FilterDialog extends StatelessWidget {
   final that;
 
   FilterDialog({key: Key, this.that});
 
-  List<List> _buildFilter = [
-    ['/fr/api/newsy?token=' + User.credToken + '&mail=' + User.credMail + '&endpoint=top-headlines&params={"country": "fr"}', 'Filtre FR'],
-    ['/fr/api/newsy?token=' + User.credToken + '&mail=' + User.credMail + '&endpoint=top-headlines&params={"country": "us"}', 'Filtre US']
-  ];
-
   List<Widget> _buildFilterButton(BuildContext context){
     List<Widget> filter = List<Widget>();
 
-    _buildFilter.forEach((data) => {
-      filter.add(FilterButton(isSelected: that.actualUrl == data[0],label: data[1],that: that,url: data[0],))
+    User.filter.forEach((data) {
+      filter.add(FilterButton(isSelected: that.actualUrl == buildUrl(data["type"], data["params"]),label: data["name"],that: that,url: buildUrl(data["type"], data["params"]),));
     });
 
     return filter;
+  }
+
+  // même nom de param que l'api
+  String buildUrl(String type, Object params){
+    return '/fr/api/newsy?token=' + User.credToken + '&mail=' + User.credMail + '&endpoint=' + type + '&params=' + jsonEncode(params);
   }
 
   @override

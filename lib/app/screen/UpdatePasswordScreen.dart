@@ -5,17 +5,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:newsy_v2/config/Constante.dart';
-import 'package:newsy_v2/model/User.dart';
+import 'package:newsy_v2/app/model/User.dart';
 
-class UpdateMailScreen extends StatefulWidget {
-  createState() => UpdateMailState();
+class UpdatePasswordScreen extends StatefulWidget {
+  createState() => UpdatePasswordState();
 }
 
-class UpdateMailState extends State<UpdateMailScreen> {
+class UpdatePasswordState extends State<UpdatePasswordScreen> {
   final _formKey = GlobalKey<FormState>();
 
   String password;
-  String newMail;
+  String newPassword;
+  String newPasswordConf;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class UpdateMailState extends State<UpdateMailScreen> {
         appBar: AppBar(
           iconTheme:
               IconThemeData(color: Theme.of(context).textTheme.body1.color),
-          title: Text("Modification du mail",
+          title: Text("Modification du mot de passe",
               style: TextStyle(color: Theme.of(context).textTheme.body1.color)),
           backgroundColor: Theme.of(context).backgroundColor,
           bottom: PreferredSize(
@@ -51,9 +52,8 @@ class UpdateMailState extends State<UpdateMailScreen> {
                         children: <Widget>[
                           TextFormField(
                             obscureText: true,
-                            keyboardType: TextInputType.visiblePassword,
                             decoration: InputDecoration(
-                                labelText: "Mot de passe"),
+                                labelText: "Mot de passe actuel"),
                             validator: (value) {
                               if (value.isEmpty) {
                                 return 'Veuillez remplir le champs';
@@ -71,21 +71,44 @@ class UpdateMailState extends State<UpdateMailScreen> {
                             },
                           ),
                           TextFormField(
-                            keyboardType: TextInputType.emailAddress,
+                            obscureText: false,
                             decoration: InputDecoration(
-                                labelText: "Nouveau mail"),
+                                labelText: "Nouveau mot de passe"),
                             validator: (value) {
                               if (value.isEmpty) {
                                 return 'Veuillez remplir le champs';
                               }
                               RegExp regExp = new RegExp(
-                                  Constante.regexMail,
+                                  Constante.regexPassword,
                                   caseSensitive: true,
                                   multiLine: false);
                               if (regExp.hasMatch(value)) {
-                                this.newMail = value;
+                                this.newPassword = value;
                               } else {
-                                return "Mail non conforme";
+                                return "Mot de passe non conforme";
+                              }
+                              return null;
+                            },
+                          ),
+                          TextFormField(
+                            obscureText: false,
+                            decoration: InputDecoration(
+                                labelText:
+                                    "Confirmation du nouveau mot de passe"),
+                            validator: (value) {
+                              if (value.isEmpty) {
+                                return 'Veuillez remplir le champs';
+                              }
+                              RegExp regExp = new RegExp(
+                                  Constante.regexPassword,
+                                  caseSensitive: true,
+                                  multiLine: false);
+                              if (this.newPassword != value) {
+                                return "Les mots de passe ne correspondent pas";
+                              } else if (regExp.hasMatch(value)) {
+                                this.newPasswordConf = value;
+                              } else {
+                                return "Confirmation de mot de passe non conforme";
                               }
                               return null;
                             },
@@ -103,7 +126,7 @@ class UpdateMailState extends State<UpdateMailScreen> {
                                 FocusScope.of(context)
                                     .requestFocus(new FocusNode());
                                 if (_formKey.currentState.validate()) {
-                                  String retour = await User.updateUserData(this.password, {"mail": this.newMail});
+                                  String retour = await User.updateUserData(this.password, {"password": this.newPassword, "password_confirm": this.newPasswordConf});
                                   if (retour == "302") {
                                     Scaffold.of(context).showSnackBar(
                                         SnackBar(
@@ -113,7 +136,7 @@ class UpdateMailState extends State<UpdateMailScreen> {
                                             duration:
                                             Duration(milliseconds: 850),
                                             content:
-                                            Text("Mail non conforme")));
+                                            Text("Mauvais mot de passe")));
                                   } else if (retour != "404") {
                                     Duration time =
                                     new Duration(milliseconds: 500);
@@ -124,7 +147,7 @@ class UpdateMailState extends State<UpdateMailScreen> {
                                                 .primaryColor,
                                             duration: time,
                                             content:
-                                            Text("Changement de mail réussi")));
+                                            Text("Changement de mot de passe réussi")));
                                     Timer(time, () {
                                       Navigator.pop(context);
                                     });

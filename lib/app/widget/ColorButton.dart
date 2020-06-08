@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_material_color_picker/flutter_material_color_picker.dart';
 import 'package:newsy_v2/config/AllColors.dart';
 import 'package:newsy_v2/main.dart';
-import 'package:newsy_v2/model/User.dart';
+import 'package:newsy_v2/app/model/User.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ColorButton extends StatefulWidget {

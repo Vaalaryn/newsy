@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:newsy_v2/controller/ArticleController.dart';
 import 'package:newsy_v2/generated/l10n.dart';
-import 'package:newsy_v2/model/User.dart';
+import 'package:newsy_v2/app/model/User.dart';
 import 'package:share/share.dart';
 
 class Article extends StatefulWidget {

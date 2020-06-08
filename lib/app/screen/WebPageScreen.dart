@@ -25,17 +25,6 @@ class _WebViewContainerState extends State<WebViewContainer> {
           iconTheme: IconThemeData(color: Theme.of(context).textTheme.body1.color),
           bottom: PreferredSize(child: Container(color:  Theme.of(context).primaryColor, height: 4.0,), preferredSize: Size.fromHeight(4.0)),
           actions: <Widget>[
-//            IconButton(
-//              icon: Icon( !this._data.push ? Icons.alarm_add : Icons.alarm_on,
-//                  color: !this._data.push
-//                      ? Theme.of(context).textTheme.body1.color
-//                      : Theme.of(context).primaryColor),
-//              onPressed: () {
-//                setState(() {
-//                  this._data.push = !this._data.push;
-//                });
-//              },
-//            ),
             IconButton(
               icon: Icon(!this._data.fav ? Icons.star_border : Icons.star,
                   color: !this._data.fav

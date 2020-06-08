@@ -11,7 +11,6 @@ class FilterButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     if(isSelected){
       return FlatButton(
         child: ListTile(
@@ -37,6 +36,7 @@ class FilterButton extends StatelessWidget {
         ),
         onPressed: () {
           that.setState(() {
+            debugPrint(url);
             that.post = that.fetchPost(url);
             Navigator.pop(context, true);
           });
