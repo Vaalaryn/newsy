@@ -1,6 +1,6 @@
-# newsy
+# newsy_v2
 
-Newsy
+Une appli de news
 
 ## Getting Started
 
