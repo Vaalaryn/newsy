@@ -111,39 +111,6 @@ class ProfilState extends State<Profil> {
                     )
                   ],
                 )),
-            DropdownMenuItem(
-                value: 'es',
-                child: Row(
-                  children: <Widget>[
-                    Flags.getMiniFlag('ES', null, 30),
-                    Container(
-                      margin: EdgeInsets.only(left: 10),
-                      child: Text(S.of(context).profilLangEs),
-                    )
-                  ],
-                )),
-            DropdownMenuItem(
-                value: 'de',
-                child: Row(
-                  children: <Widget>[
-                    Flags.getMiniFlag('DE', null, 30),
-                    Container(
-                      margin: EdgeInsets.only(left: 10),
-                      child: Text(S.of(context).profilLangDe),
-                    )
-                  ],
-                )),
-            DropdownMenuItem(
-                value: 'jp',
-                child: Row(
-                  children: <Widget>[
-                    Flags.getMiniFlag('JP', null, 30),
-                    Container(
-                      margin: EdgeInsets.only(left: 10),
-                      child: Text(S.of(context).profilLangJp),
-                    )
-                  ],
-                )),
           ],
           onChanged: (item) {
             setState(() {

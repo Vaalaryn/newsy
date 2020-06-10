@@ -26,7 +26,8 @@ class NewsState extends State<News> with AutomaticKeepAliveClientMixin<News> {
   String actualUrl;
 
   Future<PostRequest> fetchPost(String url) async {
-    final response = await http.post(Constante.baseApiUrl + url);
+    final response = await http.post(Constante.baseApiUrl + url, headers: {'Content-type': 'application/json','Accept': 'application/json'});
+    debugPrint(response.toString());
     if (response.statusCode == 200) {
       actualUrl = url;
       return PostRequest.fromJson(json.decode(response.body));
@@ -36,7 +37,7 @@ class NewsState extends State<News> with AutomaticKeepAliveClientMixin<News> {
   }
 
   void initState() {
-    actualUrl = '/fr/api/newsy?token=' + User.credToken + '&mail=' + User.credMail + '&endpoint=top-headlines&params={"country": "jp"}';
+    actualUrl = '/fr/api/newsy?token=' + User.credToken + '&mail=' + User.credMail + '&endpoint=top-headlines&params={"country": "fr"}';
   }
 
   @override

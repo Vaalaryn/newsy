@@ -41,7 +41,7 @@ class FilterDialog extends StatelessWidget {
                 decoration: TextDecoration.underline,
               )),
         ),
-        FilterButton(isSelected: that.actualUrl == '/fr/api/newsy?token=' + User.credToken + '&mail=' + User.credMail + '&endpoint=top-headlines&params={"country": "jp"}',label: "Filtre default(JP)",that: that,url: '/fr/api/newsy?token=' + User.credToken + '&mail=' + User.credMail + '&endpoint=top-headlines&params={"country": "jp"}'),
+        FilterButton(isSelected: that.actualUrl == '/fr/api/newsy?token=' + User.credToken + '&mail=' + User.credMail + '&endpoint=top-headlines&params={"country": "fr"}',label: "Filtre par default(FR)",that: that,url: '/fr/api/newsy?token=' + User.credToken + '&mail=' + User.credMail + '&endpoint=top-headlines&params={"country": "fr"}'),
         ListTile(
           title: Text(S.of(context).filterCustom,
               style: TextStyle(

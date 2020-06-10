@@ -73,32 +73,32 @@ class NewHeadlinesState extends State<NewHeadlines> {
                     trailing: DropdownButton(
                       value: _dropValuePays,
                       items: filtreBuilder(Constante.filterCountry),
-                      onChanged: (item) {
+                      onChanged: _sources == "" ? (item) {
                         setState(() {
                           _dropValuePays = item;
                         });
-                      },
+                      } : null,
                     )),
                 ListTile(
                     title: Text("Categorie"),
                     trailing: DropdownButton(
                       value: _dropValueCat,
                       items: filtreBuilder(Constante.filterCat),
-                      onChanged: (item) {
+                      onChanged: _sources == "" ? (item) {
                         setState(() {
                           _dropValueCat = item;
                         });
-                      },
+                      } : null,
                     )),
                 MultiSelectFormField(
                   autovalidate: false,
                   titleText: 'Selections de sources',
-                  dataSource: Constante.source,
+                  dataSource: _dropValueCat != "" || _dropValuePays != "" ? [] : Constante.source,
                   textField: 'name',
                   valueField: 'id',
                   okButtonLabel: 'OK',
                   cancelButtonLabel: 'RETOUR',
-                  hintText: 'Please choose one or more',
+                  hintText: 'Selectionner une ou plusieurs source',
                   value: _listSources,
                   onSaved: (value) {
                     if (value == null) return;
@@ -138,9 +138,24 @@ class NewHeadlinesState extends State<NewHeadlines> {
                         "sources": _sources,
                         "category": _dropValueCat,
                         "country": _dropValuePays,
+                        "pageSize": 100
                       }
     };
                     User.addFilter(obj);
+                    Scaffold.of(context).showSnackBar(SnackBar(
+                        content: Container(
+                          decoration: BoxDecoration(
+                              color: Theme.of(context).primaryColor),
+                          margin: EdgeInsets.fromLTRB(0, 0, 0, 75),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                                "Filtre sauvegardé"),
+                          ),
+                        ),
+                        backgroundColor: Colors.transparent,
+                        elevation: 1000,
+                        duration: Duration(milliseconds: 1200)));
                   }else {
                     Scaffold.of(context).showSnackBar(SnackBar(content: Container(
                       decoration: BoxDecoration(color: Theme.of(context).primaryColor),

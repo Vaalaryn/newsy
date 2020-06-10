@@ -39,5 +39,32 @@
   "profilLangEn":"English",
   "profilLangDe":"Deutsch",
   "profilLangEs":"Español",
-  "profilLangJp":"日本の"
+  "profilLangJp":"日本の",
+
+
+  "inscriptionTitle": "Sign up",
+  "inscriptionMsgFieldsEmpty": "Fill this input",
+  "inscriptionLabelMail": "Mail",
+  "inscriptionMsgWrongMail": "Wrong mail",
+  "inscriptionLabelPseudo": "Username",
+  "inscriptionMsgWrongPseudo": "Wrong username",
+  "inscriptionLabelMdp": "Password",
+  "inscriptionMsgWrongPassword": "Wrong password",
+  "inscriptionLabelConfPassword": "Password confirm",
+  "inscriptionMsgWrongConfPassword": "Wrong password confrim",
+  "inscriptionMsgMdpNoMatch": "Password doesn't match",
+  "inscriptionButtonValidation": "Sign up",
+  "inscriptionMailAlreadyUsed": "Mail already used",
+  "inscriptionSuccess": "Done",
+
+  "connexionTitle": "Sign in",
+  "connexionLabelMail": "Mail",
+  "connexionLabelPassword": "Password",
+  "connexionLabelRememberMe": "Remember me",
+  "connexionLabelButtonConnexion": "Submit",
+  "connexionLabelGoToInscription": "Sign up",
+  "connexionMsgWrongMail": "Wrong mail",
+  "connexionMsgWrongPassword": "Wrong password",
+  "connexionMsgConnectionError": "Error while attempting to connect",
+  "connexionCloseError": "OK"
 }

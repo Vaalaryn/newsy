@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:newsy_v2/app/screen/ReadHistory.dart';
 import 'package:newsy_v2/app/screen/UpdatePasswordScreen.dart';
 import 'package:newsy_v2/app/screen/UpdatePseudoScreen.dart';
 import 'package:newsy_v2/generated/l10n.dart';
@@ -96,6 +97,20 @@ class UserDataState extends State<UserData> {
               ]),
             ),
             ListTile(
+              title: Text("Consulter historique"),
+              trailing: IconButton(
+                icon: Icon(
+                  Icons.history,
+                  color: Theme.of(context).primaryColor,
+                ),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ReadHistory()));
+                },
+              ),
+            ),            ListTile(
               title: Text(S.of(context).profilUpdateUsername),
               trailing: IconButton(
                 icon: Icon(
